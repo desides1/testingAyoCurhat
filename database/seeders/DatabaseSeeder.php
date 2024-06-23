@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            CaseTypeSeeder::class,
+            ReportedStatusSeeder::class,
+            DisabilityTypeSeeder::class,
+            ReportingReasonSeeder::class,
+            VictimRequirementSeeder::class,
         ]);
     }
 }
