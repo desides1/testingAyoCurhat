@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('villages', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('district_id');
-            $table->foreign('district_id')->references('id')->on('districts')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name');
+            $table->string('id', 16)->primary()->unique();
+            $table->string('district_id', 8);
+            $table->string('name', 128);
             $table->timestamps();
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

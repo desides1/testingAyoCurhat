@@ -25,7 +25,7 @@ return new class extends Migration
 
             // Address
             $table->unsignedBigInteger('village_id')->nullable();
-            $table->foreign('village_id')->references('id')->on('villages')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('village_id')->references('id')->on('villages')->onUpdate('cascade')->onDelete('restrict');
             $table->string('complete_address')->nullable();
 
             $table->rememberToken();

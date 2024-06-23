@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class DisabilityType extends Model
 {
@@ -13,8 +14,8 @@ class DisabilityType extends Model
         'name',
     ];
 
-    public function reporting()
+    public function reporting(): BelongsToMany
     {
-        return $this->hasMany(Reporting::class);
+        return $this->belongsToMany(Reporting::class, 'reporting_disability_type');
     }
 }

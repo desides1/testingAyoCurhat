@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('regency_id');
-            $table->foreign('regency_id')->references('id')->on('regencies')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name');
+            $table->string('id', 8)->primary()->unique();
+            $table->string('regency_id', 8);
+            $table->string('name', 128);
             $table->timestamps();
+            $table->foreign('regency_id')->references('id')->on('regencies')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

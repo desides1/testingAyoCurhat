@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Reporting extends Model
 {
@@ -30,18 +31,18 @@ class Reporting extends Model
         return $this->belongsTo(ReportedStatus::class);
     }
 
-    public function disabilityType()
+    public function disabilityType(): BelongsToMany
     {
-        return $this->belongsTo(DisabilityType::class);
+        return $this->belongsToMany(DisabilityType::class, 'reporting_disability_type');
     }
 
-    public function reportingReason()
+    public function reportingReason(): BelongsToMany
     {
-        return $this->belongsTo(ReportingReason::class);
+        return $this->belongsToMany(ReportingReason::class, 'reporting_reporting_reason');
     }
 
-    public function victimRequirement()
+    public function victimRequirement(): BelongsToMany
     {
-        return $this->belongsTo(VictimRequirement::class);
+        return $this->belongsToMany(VictimRequirement::class, 'reporting_victim_requirement');
     }
 }
