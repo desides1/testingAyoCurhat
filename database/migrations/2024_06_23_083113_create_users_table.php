@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('phone_number')->unique()->nullable();
 
             // Address
-            $table->unsignedBigInteger('village_id')->nullable();
+            $table->string('village_id')->nullable();
             $table->foreign('village_id')->references('id')->on('villages')->onUpdate('cascade')->onDelete('restrict');
             $table->string('complete_address')->nullable();
 
