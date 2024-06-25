@@ -29,19 +29,12 @@ class RoleSeeder extends Seeder
         ]);
 
         $adminRole->givePermissionTo(
-            'read-dashboard',
-            'create-users',
-            'read-users',
-            'update-users',
-            'delete-users',
+            'dashboard_access',
         );
 
         $tamuSatgasRole->givePermissionTo(
-            'read-dashboard',
-            'create-reports',
-            'read-reports',
-            'update-reports',
-            'delete-reports',
+            'dashboard_access',
+            'emergency_call_access',
         );
     }
 }

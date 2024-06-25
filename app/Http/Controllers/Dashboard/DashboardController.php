@@ -11,4 +11,9 @@ class DashboardController extends Controller
     {
         return view('dashboard.index');
     }
+
+    public function emergencyCall()
+    {
+        return view('dashboard.emergency-call');
+    }
 }

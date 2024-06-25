@@ -19,6 +19,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('emergency-call', [DashboardController::class, 'emergencyCall'])->middleware('can:emergency_call_access')->name('emergency_call');
 
     Route::prefix('users')->middleware('can:read-users')->group(function () {
         Route::get('', [UserController::class, 'index'])->name('users');

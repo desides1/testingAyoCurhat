@@ -19,11 +19,13 @@ class PermissionSeeder extends Seeder
     {
         $permissions = [
             # Dashboard permissions
-            'read-dashboard',
+            'dashboard_access',
             # User permission
-            'create-users', 'read-users', 'update-users', 'delete-users',
-            # Laporan
-            'create-reports', 'read-reports', 'update-reports', 'delete-reports',
+            'create_users', 'read_users', 'update_users', 'archive_users',
+            # Reporting Permisson
+            'create_reportings', 'read_reportings', 'update_reportings', 'archive-reportings',
+            # Emergency Call Permisson
+            'emergency_call_access',
         ];
 
         $this->insertPermission($permissions);
@@ -36,7 +38,7 @@ class PermissionSeeder extends Seeder
             'guard_name' => 'web',
             'created_at' => Carbon::now()
         ]);
-        
+
         Permission::insert($permissions->toArray());
     }
 }

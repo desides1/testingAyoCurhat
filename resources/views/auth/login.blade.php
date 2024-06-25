@@ -19,7 +19,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="floating-label form-group">
-                                        <input class="floating-input form-control" type="text" placeholder=" " name="username">
+                                        <input class="floating-input form-control" type="text" placeholder=" " name="name">
                                         <label>Username</label>
                                     </div>
                                 </div>
