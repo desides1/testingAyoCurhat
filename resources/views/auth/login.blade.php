@@ -48,7 +48,7 @@
                         </form>
                     </div>
                     <div class="col-lg-6 mb-lg-0 mb-4 mt-lg-0 mt-4">
-                        <img src="../assets/images/login/01.png" class="img-fluid w-80" alt="">
+                        <img src="{{ asset('assets/images/pages/login.png') }}" class="img-fluid w-80" alt="">
                     </div>
                 </div>
             </div>

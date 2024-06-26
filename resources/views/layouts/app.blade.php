@@ -35,7 +35,7 @@
     <div class="wrapper">
         @include('partials.sidebar')
         @include('partials.navbar')
-        <div class="content-page rtl-page">
+        <div class="content-page">
             @yield('content')
         </div>
     </div>
