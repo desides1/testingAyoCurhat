@@ -83,9 +83,11 @@ class ReportingController extends Controller
     {
         $title = 'Unduh Pengaduan';
 
-        $reporting->load('reportingUser');
+        $reporting = $reporting->with('reportingUser')->first();
 
-        $pdf = Pdf::loadView('reporting.show', compact('title', 'reportings'));
+        // $reporting->load('reportingUser');
+
+        $pdf = Pdf::loadView('reporting.show', compact('title', 'reporting'));
         return $pdf->stream();
     }
 

@@ -12,7 +12,7 @@
     <table>
         <tr>
             <td>
-                <img src="{{ public_path('/assets/image/logo/logo-poliwangi.png') }}" alt="" style="max-width: 80px;">
+                <img src="{{ public_path('/assets/images/logo/logo-poliwangi.png') }}" alt="" style="max-width: 80px;">
             </td>
             <td>
                 <center>
