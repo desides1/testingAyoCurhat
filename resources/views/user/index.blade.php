@@ -21,14 +21,17 @@
               <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Tidak Aktif</option>
             </select>
           </div>
+
           <div class="col-md-2">
             @can('create_users')
-            <span class="table-add">
-              <a href="{{ route('users.create') }}" class="btn btn-primary btn-block">
-                <i class="ri-add-line"></i>
-                Tambah Data
-              </a>
-            </span>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#createUserModal">
+              <i class="ri-add-line"></i>
+              Tambah Data
+            </button>
+
+            <!-- Modal -->
+            @include('user.create')
+
             @endcan
           </div>
         </div>
@@ -38,6 +41,8 @@
             <tr>
               <th>No</th>
               <th>Nama</th>
+              <th>Email</th>
+              <th>Nomor Telepon</th>
               <th>Status</th>
               <th>Aksi</th>
             </tr>
@@ -47,6 +52,8 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $user->name }}</td>
+              <td>{{ $user->email }}</td>
+              <td>{{ $user->phone_number }}</td>
               <td>
                 @if ($user->user_status == 'active')
                 <span class="btn btn-success btn-sm">{{ ucfirst($user->user_status) }}</span>
@@ -55,30 +62,46 @@
                 @endif
               </td>
               <td>
-                <!-- <a href="{{ route('reportings.show', $reporting->id) }}" class="btn btn-warning btn-sm mr-2" target="_blank">
-                  <i class="ri-eye-line"></i> Detail
-                </a> -->
+                @can('update_users')
+                <!-- Detail & Edit -->
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm mr-2" data-toggle="modal" data-target="#editUserModal">
+                  <i class="ri-edit-2-line"></i>
+                  Edit
+                </a>
+
+                <!-- Modal -->
+                @include('user.edit')
+                @endcan
 
                 <!-- Update Status Petugas -->
                 @if ($user->user_status == 'active')
-                <form action="{{ route('users.status.update', $reporting->id) }}" method="POST" class="d-inline">
+                <form action="{{ route('users.status.update', $user->id) }}" method="POST" class="d-inline">
                   @csrf
                   @method('PATCH')
                   <input type="hidden" name="status" value="inactive">
                   <button type="submit" class="btn btn-danger btn-sm mr-2">
-                    <i class="ri-checkbox-indeterminate-line"></i> Non Aktifkan
+                    <i class="ri-alert-line"></i> Non Aktifkan
                   </button>
                 </form>
                 @elseif ($user->user_status == 'inactive')
-                <form action="{{ route('users.status.update', $reporting->id) }}" method="POST" class="d-inline">
+                <form action="{{ route('users.status.update', $user->id) }}" method="POST" class="d-inline">
                   @csrf
                   @method('PATCH')
                   <input type="hidden" name="status" value="active">
                   <button type="submit" class="btn btn-success btn-sm mr-2">
-                    <i class="ri-checkbox-line"></i> Aktifkan
+                    <i class="ri-check-double-line"></i> Aktifkan
                   </button>
                 </form>
                 @endif
+
+                <!-- Hapus Petugas -->
+                <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus petugas ini?')">
+                    <i class="ri-delete-bin-line"></i> Hapus
+                  </button>
+                </form>
               </td>
             </tr>
             @endforeach
@@ -95,6 +118,19 @@
   $(function() {
     $('#select-user-status-filter').change(e => {
       window.location.href = `{{ route("users.index") }}${$(e.target).val() ? `?status=${$(e.target).val()}` : ''}`;
+    });
+  });
+
+  document.querySelectorAll('#togglePassword').forEach(item => {
+    item.addEventListener('click', function(e) {
+      const password = e.target.closest('.input-group').querySelector('#password');
+      if (password.type === 'password') {
+        password.type = 'text';
+        item.innerHTML = '<i class="fa fa-eye-slash"></i>';
+      } else {
+        password.type = 'password';
+        item.innerHTML = '<i class="fa fa-eye"></i>';
+      }
     });
   });
 </script>

@@ -41,6 +41,7 @@ class RoleSeeder extends Seeder
             'create_users',
             'update_users',
             'update_user_status',
+            'delete_users',
             'logout',
         );
 

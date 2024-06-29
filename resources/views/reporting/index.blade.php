@@ -8,16 +8,17 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <div class="header-title w-100">
-                    <h4 class="card-title d-inline-block mb-0">Pengaduan</h4>
-                    <select class="form-control mt-2" id="select-reporting-status-filter" name="filter">
-                        <option value="" {{ request('status') == '' ? 'selected' : '' }}>Semua Pengaduan</option>
-                        <option value="published" {{ request('status') == 'published' ? 'selected' : '' }}>Dipublikasikan</option>
-                        <option value="archived" {{ request('status') == 'archived' ? 'selected' : '' }}>Diarsipkan</option>
-                    </select>
+                    <h4 class="card-title d-inline-block mb-0">Data Pengaduan</h4>
                 </div>
             </div>
 
             <div class="card-body">
+                <select class="form-control mb-4" id="select-reporting-status-filter" name="filter">
+                    <option value="" {{ request('status') == '' ? 'selected' : '' }}>Semua Pengaduan</option>
+                    <option value="published" {{ request('status') == 'published' ? 'selected' : '' }}>Dipublikasikan</option>
+                    <option value="archived" {{ request('status') == 'archived' ? 'selected' : '' }}>Diarsipkan</option>
+                </select>
+
                 <table id="datatable" class="table data-table table-striped table-bordered">
                     <thead>
                         <tr>

@@ -9,36 +9,53 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Petugas';
 
-        $users = User::role('Petugas')->get();
-        return view('user.index', compact('title', 'users'));
+        $status = $request->input('status');
+        $query = User::role('Petugas');
+
+        if ($status == 'active') {
+            $query->where('user_status', 'active');
+        } elseif ($status == 'inactive') {
+            $query->where('user_status', 'inactive');
+        }
+
+        $users = $query->get();
+
+        return view('user.index', compact('title', 'users', 'status'));
     }
 
-    public function create()
-    {
-        return view('user.create');
-    }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|unique:users,name',
-            'password' => 'required|min:6',
+            'email' => 'required|email',
+            'phone_number' => 'required',
+            'password' => 'required',
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
-            'user_status' => 'active',
         ]);
 
         $user->assignRole('Petugas');
 
         return redirect()->route('users.index')->with('success', 'Berhasil menambahkan data petugas');
     }
+
+    public function show(User $user)
+    {
+        $title = 'Detail Petugas';
+
+        return view('user.show', compact('title', 'user'));
+    }
+
 
     public function edit(User $user)
     {
@@ -50,15 +67,20 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|unique:users,name,' . $user->id,
             'password' => 'nullable|min:6',
+            'email' => 'required|email',
+            'phone_number' => 'required',
         ]);
 
         $user->update([
             'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => $request->password ? Hash::make($request->password) : $user->password,
         ]);
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        return redirect()->route('users.index')->with('success', 'Data petugas berhasil diperbarui');
     }
+
 
     public function updateUserStatus(Request $request, $id)
     {
@@ -72,6 +94,13 @@ class UserController extends Controller
 
         $users->save();
 
-        return redirect()->route('petugas.index')->with('success', 'Status petugas berhasil diperbarui');
+        return redirect()->route('users.index')->with('success', 'Status petugas berhasil diperbarui');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'Data petugas berhasil dihapus');
     }
 }

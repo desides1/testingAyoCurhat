@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\EmergencyCallController;
 use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
@@ -44,8 +45,11 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('petugas')->group(function () {
         Route::get('', [UserController::class, 'index'])->middleware('can:read_users')->name('users.index');
-        Route::get('/create', [UserController::class, 'create'])->middleware('can:create_users')->name('users.create');
         Route::post('/store', [UserController::class, 'store'])->middleware('can:create_users')->name('users.store');
+        Route::get('/show', [UserController::class, 'show'])->middleware('can:read_users')->name('users.show');
+        Route::get('/edit', [UserController::class, 'edit'])->middleware('can:update_users')->name('users.edit');
+        Route::patch('/{user}/update', [UserController::class, 'update'])->middleware('can:update_users')->name('users.update');
         Route::patch('/{id}/status', [UserController::class, 'updateUserStatus'])->middleware('can:update_user_status')->name('users.status.update');
+        Route::delete('/{user}/delete', [UserController::class, 'destroy'])->middleware('can:delete_users')->name('users.destroy');
     });
 });
