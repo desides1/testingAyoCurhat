@@ -23,7 +23,7 @@ class PermissionSeeder extends Seeder
             # User permission
             'create_users', 'read_users', 'update_users', 'archive_users',
             # Reporting Permisson
-            'create_reportings', 'read_reportings', 'update_reportings', 'archive-reportings',
+            'create_reportings', 'read_reportings', 'read_all_reportings', 'show_detail_reportings', 'read__reporting_progress', 'create_reporting_progress', 'archive-reportings',
             # Emergency Call Permisson
             'emergency_call_access',
         ];

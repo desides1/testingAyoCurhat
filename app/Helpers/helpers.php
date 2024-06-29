@@ -63,10 +63,10 @@ function isActiveSidebar($urlToCompare)
 
     if (is_array($urlToCompare)) {
         foreach ($urlToCompare as $url) {
-            if (Request::fullUrl() === $url) return $activeClass;
+            if (request()->fullUrl() === $url) return $activeClass;
         }
     } else {
-        return Request::fullUrl() == $urlToCompare ? $activeClass : '';
+        return request()->fullUrl() == $urlToCompare ? $activeClass : '';
     }
 }
 
@@ -81,15 +81,15 @@ function compareTime($first, $comparison, $last)
     $last = ($last[0] * 60 * 60) + ($last[1] * 60);
 
     switch ($comparison) {
-        case '<' :
+        case '<':
             return $first < $last;
-        case '>' :
+        case '>':
             return $first > $last;
-        case '<=' :
+        case '<=':
             return $first <= $last;
-        case '>=' :
+        case '>=':
             return $first >= $last;
-        case '==' :
+        case '==':
             return $first == $last;
     }
 }
@@ -169,7 +169,8 @@ function spawnDateFilterIndicator($reportType = 'monthly', $params = [])
     }
 }
 
-function dataTableBuilder($model, $columns = []) {
+function dataTableBuilder($model, $columns = [])
+{
     $dtb = DataTables::of($model);
     foreach ($columns as $columnName => $cb) {
         $dtb->addColumn($columnName, $cb);
@@ -195,7 +196,6 @@ function processOdontogramScheme($schemas)
         if (count($processedOdontograms[$currentOdontogramId]) == $odontogramLength) {
             $processedOdontograms[$currentOdontogramId] = $currentOdontogramId;
         }
-
     }
 
     foreach ($processedOdontograms as $idx => $processedOdontogram) {

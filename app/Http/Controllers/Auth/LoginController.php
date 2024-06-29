@@ -10,7 +10,9 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        $title = 'Login';
+
+        return view('auth.login', compact('title'));
     }
 
     public function login(Request $request)

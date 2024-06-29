@@ -30,11 +30,20 @@ class RoleSeeder extends Seeder
 
         $adminRole->givePermissionTo(
             'dashboard_access',
+            'read_all_reportings',
+            'show_detail_reportings',
+            'read__reporting_progress',
+            'create_reporting_progress',
+            'archive-reportings',
         );
 
         $tamuSatgasRole->givePermissionTo(
             'dashboard_access',
             'emergency_call_access',
+            'read_reportings',
+            'create_reportings',
+            'show_detail_reportings',
+            'read__reporting_progress',
         );
     }
 }

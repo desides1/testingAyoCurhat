@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('reporter_id');
             $table->foreign('reporter_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
-            $table->enum('reporter_as', ['saksi', 'korban']);
+            $table->enum('reporter_as', ['saksi', 'korban'])->default('saksi');
             $table->unsignedBigInteger('case_type_id');
             $table->foreign('case_type_id')->references('id')->on('case_types')->onUpdate('cascade')->onDelete('restrict');
             $table->text('case_description');
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('optional_email')->nullable();
             $table->string('optional_victim_requirement')->nullable();
             $table->string('reporter_signature')->nullable();
+            $table->enum('reporting_status', ['published', 'archived'])->default('published')->nullable();
             $table->timestamps();
         });
     }
@@ -41,9 +42,6 @@ return new class extends Migration
             $table->dropForeign(['reporter_id']);
             $table->dropForeign(['case_type_id']);
             $table->dropForeign(['reported_status_id']);
-            $table->dropForeign(['disability_type_id']);
-            $table->dropForeign(['reporting_reason_id']);
-            $table->dropForeign(['victim_requirement_id']);
         });
 
         Schema::dropIfExists('reportings');

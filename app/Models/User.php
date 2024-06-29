@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function reporting()
     {
-        return $this->hasMany(Reporting::class);
+        return $this->hasMany(Reporting::class, 'reporter_id');
     }
 }

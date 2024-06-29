@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Ayo Curhat</title>
+    <title>Ayo Curhat | {{ $title ?? '' }}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/logo-color.png') }}" />
@@ -21,6 +21,8 @@
     <link rel='stylesheet' href="{{ asset('assets/vendor/fullcalendar/timegrid/main.css') }}" />
     <link rel='stylesheet' href="{{ asset('assets/vendor/fullcalendar/list/main.css') }} " />
     <link rel="stylesheet" href="{{ asset('assets/vendor/mapbox/mapbox-gl.css') }}" />
+
+    @yield('style')
 </head>
 
 <body class=" color-light ">
@@ -44,6 +46,8 @@
     @include('partials.footer')
     <!-- Backend Bundle JavaScript -->
     <script src="{{ asset('assets/js/backend-bundle.min.js') }}"></script>
+
+    @yield('script')
 
     <!-- Flextree Javascript-->
     <script src="{{ asset('assets/js/flex-tree.min.js') }}"></script>

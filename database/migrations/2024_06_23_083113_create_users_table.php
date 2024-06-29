@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('password');
 
             // Detail person
+            $table->enum('gender', ['laki-laki', 'perempuan'])->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('gender')->nullable();
             $table->string('phone_number')->unique()->nullable();
 
             // Address

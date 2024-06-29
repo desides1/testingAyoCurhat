@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Reporting extends Model
@@ -16,9 +17,9 @@ class Reporting extends Model
         'updated_at',
     ];
 
-    public function reportingUser()
+    public function reportingUser(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'reporter_id');
     }
 
     public function caseType()
@@ -44,5 +45,10 @@ class Reporting extends Model
     public function victimRequirement(): BelongsToMany
     {
         return $this->belongsToMany(VictimRequirement::class, 'reporting_victim_requirement');
+    }
+
+    public function reportingProgress()
+    {
+        return $this->belongsTo(ReportingProgress::class);
     }
 }

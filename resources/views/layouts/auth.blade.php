@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Ayo Curhat</title>
+    <title>Ayo Curhat | {{ $title ?? '' }}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/logo-color.png') }}" />

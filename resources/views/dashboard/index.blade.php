@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $title)
+
 @section('content')
 @hasanyrole('Admin|Petugas')
 <div class="container-fluid">

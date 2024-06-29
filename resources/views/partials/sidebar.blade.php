@@ -29,6 +29,24 @@
                 </li>
                 @endcan
 
+                @can('read_all_reportings')
+                <li class="{{ isActiveSidebar(route('reportings.all')) }}">
+                    <a href="{{ route('reportings.all') }}">
+                        <i class="ri-edit-box-line"></i>
+                        <span>Pengaduan</span>
+                    </a>
+                </li>
+                @endcan
+
+                @can('read_reportings')
+                <li class="{{ isActiveSidebar(route('reportings.user')) }}">
+                    <a href="{{ route('reportings.user') }}">
+                        <i class="ri-edit-box-line"></i>
+                        <span>Pengaduan</span>
+                    </a>
+                </li>
+                @endcan
+
                 @can('read-users')
                 <li class="">
                     <a href="{{ route('users') }}">
