@@ -47,37 +47,32 @@
                 </li>
                 @endcan
 
-                @can('read-users')
-                <li class="">
+                @can('read_counselings')
+                <li class="{{ isActiveSidebar(route('reportings.user')) }}">
                     <a href="{{ route('users') }}">
-                        <i class="ri-stethoscope-line"></i>
+                        <i class="ri-message-line"></i>
+                        <span>Konseling</span>
+                    </a>
+                </li>
+                @endcan
+
+                @can('read_users')
+                <li class="{{ isActiveSidebar(route('reportings.user')) }}">
+                    <a href="{{ route('users') }}">
+                        <i class="ri-group-line"></i>
                         <span>Manajemen Petugas</span>
                     </a>
                 </li>
                 @endcan
-                <li class=" ">
-                    <a href="#Dashboards" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                        <i class="las la-home"></i><span>Sub Menu</span>
-                        <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                        <i class="las la-angle-down iq-arrow-right arrow-hover"></i></a>
-                    <ul id="Dashboards" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li class=" ">
-                            <a href="../backend/index.html">
-                                <i class="lab la-blogger-b"></i><span>Dashboard 1</span>
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="../backend/dashboard-2.html">
-                                <i class="las la-share-alt"></i><span>Dashboard 2</span>
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="../backend/dashboard-3.html">
-                                <i class="las la-icons"></i><span>Dashboard 3</span>
-                            </a>
-                        </li>
-                    </ul>
+
+                @can('logout')
+                <li class="{{ isActiveSidebar(route('logout')) }}">
+                    <a href="{{ route('logout') }}">
+                        <i class="ri-logout-box-r-line"></i>
+                        <span>Logout</span>
+                    </a>
                 </li>
+                @endcan
             </ul>
         </nav>
         <div class="p-3"></div>

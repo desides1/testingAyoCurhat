@@ -32,9 +32,16 @@ class RoleSeeder extends Seeder
             'dashboard_access',
             'read_all_reportings',
             'show_detail_reportings',
-            'read__reporting_progress',
+            'read_reporting_progress',
             'create_reporting_progress',
-            'archive-reportings',
+            'update_reporting_status',
+            'read_counselings',
+            'create_counselings',
+            'read_users',
+            'create_users',
+            'update_users',
+            'update_user_status',
+            'logout',
         );
 
         $tamuSatgasRole->givePermissionTo(
@@ -43,7 +50,10 @@ class RoleSeeder extends Seeder
             'read_reportings',
             'create_reportings',
             'show_detail_reportings',
-            'read__reporting_progress',
+            'read_reporting_progress',
+            'read_counselings',
+            'create_counselings',
+            'logout',
         );
     }
 }

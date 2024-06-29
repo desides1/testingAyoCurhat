@@ -21,11 +21,25 @@ class PermissionSeeder extends Seeder
             # Dashboard permissions
             'dashboard_access',
             # User permission
-            'create_users', 'read_users', 'update_users', 'archive_users',
+            'read_users',
+            'create_users',
+            'update_users',
+            'update_user_status',
             # Reporting Permisson
-            'create_reportings', 'read_reportings', 'read_all_reportings', 'show_detail_reportings', 'read__reporting_progress', 'create_reporting_progress', 'archive-reportings',
+            'create_reportings',
+            'read_reportings',
+            'read_all_reportings',
+            'show_detail_reportings',
+            'read_reporting_progress',
+            'create_reporting_progress',
+            'update_reporting_status',
+            # Counseling Permission
+            'read_counselings',
+            'create_counselings',
             # Emergency Call Permisson
             'emergency_call_access',
+            # Auth Permission
+            'logout',
         ];
 
         $this->insertPermission($permissions);

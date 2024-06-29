@@ -46,20 +46,33 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('reportings.show') }}" class="btn btn-warning btn-sm mr-2">
+                                <a href="{{ route('reportings.show', $reporting->id) }}" class="btn btn-warning btn-sm mr-2" target="_blank">
                                     <i class="ri-eye-line"></i> Detail
                                 </a>
-                                <a href="{{ route('reportings.progress') }}" class="btn btn-primary btn-sm mr-2">
+
+                                <a href="{{ route('reportings.progress', $reporting->id) }}" class="btn btn-primary btn-sm mr-2">
                                     <i class="ri-line-chart-line"></i> Progress
                                 </a>
+
+                                <!-- Update Status Pengaduan -->
                                 @if ($reporting->reporting_status == 'published')
-                                <a href="#" class="btn btn-danger btn-sm mr-2">
-                                    <i class="ri-inbox-archive-line"></i> Arsipkan
-                                </a>
+                                <form action="{{ route('reportings.status.update', $reporting->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="archive">
+                                    <button type="submit" class="btn btn-danger btn-sm mr-2">
+                                        <i class="ri-inbox-archive-line"></i> Arsipkan
+                                    </button>
+                                </form>
                                 @elseif ($reporting->reporting_status == 'archived')
-                                <a href="#" class="btn btn-success btn-sm mr-2">
-                                    <i class="ri-inbox-unarchive-line"></i> Publikasikan
-                                </a>
+                                <form action="{{ route('reportings.status.update', $reporting->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="publish">
+                                    <button type="submit" class="btn btn-success btn-sm mr-2">
+                                        <i class="ri-inbox-unarchive-line"></i> Publikasikan
+                                    </button>
+                                </form>
                                 @endif
                             </td>
                         </tr>

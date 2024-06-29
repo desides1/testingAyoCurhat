@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     // Pengaduan
     Route::prefix('pengaduan')->group(function () {
         Route::get('/all', [ReportingController::class, 'index'])->middleware('can:read_all_reportings')->name('reportings.all');
-        Route::get('', [ReportingController::class, 'userReportingsIndex'])->middleware('can:read_reportings')->name('reportings.user');
+        Route::get('', [ReportingController::class, 'indexReportingUser'])->middleware('can:read_reportings')->name('reportings.user');
         Route::get('/create', [ReportingController::class, 'create'])->middleware('can:create_reportings')->name('reportings.create');
         Route::post('/store', [ReportingController::class, 'store'])->middleware('can:create_reportings')->name('reportings.store');
 
@@ -35,8 +35,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/show', [ReportingController::class, 'show'])->middleware('can:show_detail_reportings')->name('reportings.show');
 
         // Progress Pengaduan
-        Route::get('/progress', [ReportingController::class, 'reportingProgressIndex'])->middleware('can:read__reporting_progress')->name('reportings.progress');
-        Route::post('/progress/create', [ReportingController::class, 'reportingProgressStore'])->middleware('can:create_reporting_progress')->name('reportings.progress.create');
+        Route::get('/progress', [ReportingController::class, 'indexReportingProgress'])->middleware('can:read_reporting_progress')->name('reportings.progress');
+        Route::post('/progress/create', [ReportingController::class, 'storeReportingProgress'])->middleware('can:create_reporting_progress')->name('reportings.progress.create');
+
+        // Archive / Unarchive
+        Route::patch('/{id}/status', [ReportingController::class, 'updateReportingStatus'])->middleware('can:update_reporting_status')->name('reportings.status.update');
     });
 
     Route::prefix('users')->middleware('can:read-users')->group(function () {

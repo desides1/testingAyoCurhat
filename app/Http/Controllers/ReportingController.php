@@ -32,14 +32,14 @@ class ReportingController extends Controller
     }
 
 
-    public function userReportingsIndex()
+    public function indexReportingUser()
     {
         $title = 'Pengaduan';
 
         $user = Auth::user();
         $reportings = Reporting::where('reporter_id', $user->id)->with('caseType')->get();
 
-        return view('reporting.user-index', compact('title', 'reportings'));
+        return view('reporting.index-user', compact('title', 'reportings'));
     }
 
     public function create()
@@ -83,21 +83,21 @@ class ReportingController extends Controller
     {
         $title = 'Unduh Pengaduan';
 
-        $reporting = $reporting->with('reportingUser')->first();
+        $reporting = $reporting->with(['reportingUser', 'reportingReason', 'reportedStatus', 'disabilityType', 'victimRequirement'])->first();
 
         $pdf = Pdf::loadView('reporting.show', compact('title', 'reporting'));
         return $pdf->stream();
     }
 
-    public function reportingProgressIndex()
+    public function indexReportingProgress()
     {
         $title = 'Progress Pengaduan';
         $reportingProgresses = ReportingProgress::with('reporting')->get();
 
-        return view('reporting.progress-index', compact('title', 'reportingProgresses'));
+        return view('reporting.index-progress', compact('title', 'reportingProgresses'));
     }
 
-    public function reportingProgressStore(Request $request)
+    public function storeReportingProgress(Request $request)
     {
         $request->validate([
             'reporting_id' => 'required',
@@ -110,5 +110,20 @@ class ReportingController extends Controller
         $progress->save();
 
         return redirect()->route('reportings.progress')->with('success', 'Progress berhasil ditambahkan');
+    }
+
+    public function updateReportingStatus(Request $request, $id)
+    {
+        $reporting = Reporting::findOrFail($id);
+
+        if ($request->status == 'archive') {
+            $reporting->reporting_status = 'archived';
+        } elseif ($request->status == 'publish') {
+            $reporting->reporting_status = 'published';
+        }
+
+        $reporting->save();
+
+        return redirect()->route('reportings.all')->with('success', 'Status pengaduan berhasil diubah');
     }
 }
