@@ -14,71 +14,42 @@
 
             <div class="card-body">
                 @can('create_reporting_progress')
-                <form action="{{ route('reportings.progress.create') }}" method="POST">
+                <form action="{{ route('reportings.progress.create') }}" method="POST" class="mb-4">
                     @csrf
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <textarea class="form-control" id="note" name="note" rows="2" placeholder="Catatan Progress"></textarea>
+                                <textarea class="form-control" id="note" name="note" rows="1" placeholder="Catatan Progress"></textarea>
                             </div>
                         </div>
                         <div class="col-md-3 text-right text-md-left">
-                            <button type="submit" class="btn btn-success mt-1">Tambahkan</button>
+                            <button type="submit" class="btn btn-primary mt-1">Tambahkan</button>
                         </div>
                     </div>
                 </form>
                 @endcan
-                <div class="timeline-page">
+
+                @forelse ($reportingProgress as $index => $progress)
+                <div class="timeline-page mb-4">
                     <div class="iq-timeline0 m-0 d-flex align-items-center justify-content-between position-relative">
                         <ul class="list-inline p-0 m-0">
                             <li>
-                                <div class="timeline-dots1 border-primary text-primary"><i class="ri-login-circle-line"></i>
-                                </div>
-                                <h6 class="float-left mb-1">Client Login</h6>
-                                <small class="float-right mt-1">24 November 2019</small>
+                                <div class="timeline-dots1 border-primary text-primary">{{ $index + 1 }}</div>
+                                <h6 class="mb-1">{{ $progress->created_at->format('d F Y') }}</h6>
+                                <small class="d-block">{{ $progress->created_at->format('H:i:s') }}</small>
                                 <div class="d-inline-block w-100">
-                                    <p>Bonbon macaroon jelly beans gummi bears jelly lollipop apple</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-dots1 border-success text-success"><i class="ri-shape-line"></i>
-                                </div>
-                                <h6 class="float-left mb-1">Scheduled Maintenance</h6>
-                                <small class="float-right mt-1">23 November 2019</small>
-                                <div class="d-inline-block w-100">
-                                    <p>Bonbon macaroon jelly beans gummi bears jelly lollipop apple</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-dots1 border-danger text-danger"><i class="ri-clockwise-2-fill"></i>
-                                </div>
-                                <h6 class="float-left mb-1">Dev Meetup</h6>
-                                <small class="float-right mt-1">20 November 2019</small>
-                                <div class="d-inline-block w-100">
-                                    <p>Bonbon macaroon jelly beans <a href="#">gummi bears</a>gummi bears jelly lollipop apple</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-dots1 border-primary text-primary"><i class="ri-phone-fill"></i>
-                                </div>
-                                <h6 class="float-left mb-1">Client Call</h6>
-                                <small class="float-right mt-1">19 November 2019</small>
-                                <div class="d-inline-block w-100">
-                                    <p>Bonbon macaroon jelly beans gummi bears jelly lollipop apple</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-dots1 border-warning text-warning"><i class="ri-book-open-fill"></i>
-                                </div>
-                                <h6 class="float-left mb-1">Mega event</h6>
-                                <small class="float-right mt-1">15 November 2019</small>
-                                <div class="d-inline-block w-100">
-                                    <p>Bonbon macaroon jelly beans gummi bears jelly lollipop apple</p>
+                                    <p>{{ $progress->note }}</p>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
+                @empty
+                <div class="text-center mt-4">
+                    <img src="{{ asset('assets/images/pages/index-progress.png') }}" class="img-fluid rounded mb-4" alt="Responsive image" style="width: 400px; height: auto">
+                    <p>Progress belum ditambahkan</p>
+                </div>
+                @endforelse
             </div>
         </div>
     </div>

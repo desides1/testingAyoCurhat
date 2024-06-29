@@ -44,6 +44,16 @@ class RoleSeeder extends Seeder
             'logout',
         );
 
+        $petugasRole->givePermissionTo(
+            'dashboard_access',
+            'read_all_reportings',
+            'show_detail_reportings',
+            'read_reporting_progress',
+            'create_reporting_progress',
+            'update_reporting_status',
+            'logout',
+        );
+
         $tamuSatgasRole->givePermissionTo(
             'dashboard_access',
             'emergency_call_access',

@@ -48,8 +48,8 @@
                 @endcan
 
                 @can('read_counselings')
-                <li class="{{ isActiveSidebar(route('reportings.user')) }}">
-                    <a href="{{ route('users') }}">
+                <li class="{{ isActiveSidebar(route('users.index')) }}">
+                    <a href="{{ route('users.index') }}">
                         <i class="ri-message-line"></i>
                         <span>Konseling</span>
                     </a>
@@ -57,8 +57,8 @@
                 @endcan
 
                 @can('read_users')
-                <li class="{{ isActiveSidebar(route('reportings.user')) }}">
-                    <a href="{{ route('users') }}">
+                <li class="{{ isActiveSidebar(route('users.index')) }}">
+                    <a href="{{ route('users.index') }}">
                         <i class="ri-group-line"></i>
                         <span>Manajemen Petugas</span>
                     </a>

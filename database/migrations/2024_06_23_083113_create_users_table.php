@@ -28,6 +28,8 @@ return new class extends Migration
             $table->foreign('village_id')->references('id')->on('villages')->onUpdate('cascade')->onDelete('restrict');
             $table->string('complete_address')->nullable();
 
+            $table->enum('user_status', ['active', 'inactive'])->default('active');
+
             $table->rememberToken();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
