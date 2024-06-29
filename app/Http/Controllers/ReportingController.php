@@ -116,7 +116,7 @@ class ReportingController extends Controller
         $progress->note = $request->input('note');
         $progress->save();
 
-        return redirect()->route('reportings.progress')->with('success', 'Progress berhasil ditambahkan');
+        return redirect()->route('reportings.progress', ['id' => $request->reporting_id])->with('success', 'Progress berhasil ditambahkan');
     }
 
     public function updateReportingStatus(Request $request, $id)
