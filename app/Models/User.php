@@ -62,6 +62,6 @@ class User extends Authenticatable
 
     public function counseling()
     {
-        return $this->hasMany(Counseling::class, 'sender_id', 'receiver_id');
+        return $this->hasMany(Counseling::class, 'sender_id');
     }
 }

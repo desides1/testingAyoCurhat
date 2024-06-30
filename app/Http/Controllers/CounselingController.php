@@ -16,7 +16,7 @@ class CounselingController extends Controller
         $users = User::role('Tamu Satgas')->get();
         $adminId = User::role('Admin')->first()->id;
 
-        $chats = auth()->user()->getRoleNames()[0] == 'Tamu Satgas' ? Counseling::where('sender_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get() : [];
+        $chats = auth()->user()->getRoleNames()[0] == 'Tamu Satgas' ? Counseling::where('sender_id', auth()->user()->id)->orWhere('receiver_id', auth()->user()->id)->orderBy('created_at', 'ASC')->get() : [];
 
         return view('counseling.index', compact('title', 'users', 'adminId', 'chats'));
     }

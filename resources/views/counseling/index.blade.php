@@ -34,9 +34,6 @@
                                                     <h6 class="mb-0 mr-3 rtl-mr-0">{{ $user->name }}</h6>
                                                     <span>{{ $user->user_status }}</span>
                                                 </div>
-                                                <div class="chat-meta float-right text-center mt-2 mr-1">
-                                                    <span class="text-nowrap">05 min</span>
-                                                </div>
                                             </div>
                                         </a>
                                     </li>
@@ -80,23 +77,27 @@
                                     </div>
 
                                     <div class="chat-content scroller">
-                                        <div class="chat">
-                                            <div class="chat-user">
-                                                <a class="avatar m-0">
-                                                    <img src="{{ asset('assets/images/user/1.jpg') }}" alt="avatar" class="avatar-35">
-                                                </a>
-                                                <span class="chat-time mt-1">6:45</span>
-                                            </div>
-                                            <div class="chat-detail">
-                                                <div class="chat-message">
-                                                    <p>How can we help? We're here for you! 😄</p>
+                                        @php $chats = \App\Models\Counseling::where('sender_id', $user->id)->orWhere('receiver_id', $user->id)->orderBy('created_at', 'asc')->get(); @endphp
+                                        @foreach ($chats as $chat)
+                                            <div class="chat {{ $chat->sender_id != auth()->user()->id ? 'chat-left' : '' }}">
+                                                <div class="chat-user">
+                                                    <a class="avatar m-0">
+                                                        <img src="{{ asset('assets/images/user/1.jpg') }}" alt="avatar" class="avatar-35">
+                                                    </a>
+                                                    <span class="chat-time mt-1">6:45</span>
+                                                </div>
+                                                <div class="chat-detail">
+                                                    <div class="chat-message">
+                                                        <p>{{ $chat->message }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="chat-footer p-3 bg-white">
-                                        <form class="d-flex align-items-center" action="{{ route('counselings.send') }}">
+                                        <form class="d-flex align-items-center" action="{{ route('counselings.send') }}" method="POST">
                                             @csrf
+                                            <input type="hidden" name="receiver_id" value="{{ $user->id }}">
                                             <input type="text" class="form-control mr-3 rtl-mr-0 rtl-ml-3" placeholder="Type your message" name="message">
                                             <button type="submit" class="btn btn-primary d-flex align-items-center p-2 mr-3 rtl-mr-0 rtl-ml-3"><i class="far fa-paper-plane mr-0" aria-hidden="true"></i><span class="d-none d-lg-block ml-1 mr-1">Send</span></button>
                                         </form>
@@ -146,7 +147,7 @@
 
                                     <div class="chat-content scroller">
                                         @foreach ($chats as $chat)
-                                        <div class="chat">
+                                        <div class="chat {{ $chat->sender_id != auth()->user()->id ? 'chat-left' : '' }}">
                                             <div class="chat-user">
                                                 <a class="avatar m-0">
                                                     <img src="{{ asset('assets/images/user/1.jpg') }}" alt="avatar" class="avatar-35">
