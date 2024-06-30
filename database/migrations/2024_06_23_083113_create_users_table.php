@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             // Credential
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('password');
 
             // Detail person

@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reporting::class, 'reporter_id');
     }
+
+    public function counseling()
+    {
+        return $this->hasMany(Counseling::class, 'sender_id', 'receiver_id');
+    }
 }

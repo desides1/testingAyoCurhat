@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('optional_email')->nullable();
             $table->string('optional_victim_requirement')->nullable();
             $table->string('reporter_signature')->nullable();
-            $table->enum('reporting_status', ['published', 'archived'])->default('published')->nullable();
+            $table->enum('reporting_status', ['published', 'archived'])->default('published');
             $table->timestamps();
         });
     }

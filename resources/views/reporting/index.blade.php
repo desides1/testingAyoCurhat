@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-<div class="row mt-5">
+<div class="row mx-1 my-1">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">
@@ -19,7 +19,7 @@
                     <option value="archived" {{ request('status') == 'archived' ? 'selected' : '' }}>Diarsipkan</option>
                 </select>
 
-                <table id="datatable" class="table data-table table-striped table-bordered">
+                <table id="datatable" class="table data-table table-striped table-bordered text-center" style="font-size: 0.875rem;">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -47,11 +47,11 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('reportings.show', $reporting->id) }}" class="btn btn-warning btn-sm mr-2" target="_blank">
+                                <a href="{{ route('reportings.show', $reporting->id) }}" class="btn btn-warning btn-sm mr-2 my-2" target="_blank">
                                     <i class="ri-eye-line"></i> Detail
                                 </a>
 
-                                <a href="{{ route('reportings.progress', $reporting->id) }}" class="btn btn-primary btn-sm mr-2">
+                                <a href="{{ route('reportings.progress', $reporting->id) }}" class="btn btn-info btn-sm mr-2 my-2">
                                     <i class="ri-line-chart-line"></i> Progress
                                 </a>
 
@@ -61,7 +61,7 @@
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="status" value="archive">
-                                    <button type="submit" class="btn btn-danger btn-sm mr-2">
+                                    <button type="submit" class="btn btn-danger btn-sm mr-2 my-2">
                                         <i class="ri-inbox-archive-line"></i> Arsipkan
                                     </button>
                                 </form>
@@ -70,7 +70,7 @@
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="status" value="publish">
-                                    <button type="submit" class="btn btn-success btn-sm mr-2">
+                                    <button type="submit" class="btn btn-success btn-sm mr-2 my-2">
                                         <i class="ri-inbox-unarchive-line"></i> Publikasikan
                                     </button>
                                 </form>

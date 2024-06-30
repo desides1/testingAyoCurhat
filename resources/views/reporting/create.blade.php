@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-<div class="row mt-5">
+<div class="row mx-1 my-1">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between">

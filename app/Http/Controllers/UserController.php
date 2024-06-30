@@ -31,7 +31,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:users,name',
+            'name' => 'required',
             'email' => 'required|email',
             'phone_number' => 'required',
             'password' => 'required',
@@ -56,7 +56,6 @@ class UserController extends Controller
         return view('user.show', compact('title', 'user'));
     }
 
-
     public function edit(User $user)
     {
         return view('user.edit', compact('user'));
@@ -65,10 +64,10 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required|unique:users,name,' . $user->id,
-            'password' => 'nullable|min:6',
-            'email' => 'required|email',
-            'phone_number' => 'required',
+            'name' => 'required',
+            'password' => 'nullable',
+            'email' => 'nullable',
+            'phone_number' => 'nullable',
         ]);
 
         $user->update([
@@ -81,6 +80,29 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Data petugas berhasil diperbarui');
     }
 
+    public function indexProfile(User $user)
+    {
+        $title = 'Profil Saya';
+
+        return view('user.index-profile', compact('title', 'user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'email' => 'nullable|email',
+            'phone_number' => 'nullable',
+            'complete_address' => 'nullable',
+        ]);
+
+        User::find(auth()->user()->id)->update([
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'complete_address' => $request->complete_address,
+        ]);
+
+        return redirect()->route('users.profile')->with('success', 'Profil anda berhasil diperbarui');
+    }
 
     public function updateUserStatus(Request $request, $id)
     {

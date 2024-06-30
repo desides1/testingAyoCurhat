@@ -26,6 +26,7 @@ class PermissionSeeder extends Seeder
             'update_users',
             'update_user_status',
             'delete_users',
+            'update_profile',
             # Reporting Permisson
             'create_reportings',
             'read_reportings',

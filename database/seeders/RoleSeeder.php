@@ -64,6 +64,7 @@ class RoleSeeder extends Seeder
             'read_reporting_progress',
             'read_counselings',
             'create_counselings',
+            'update_profile',
             'logout',
         );
     }

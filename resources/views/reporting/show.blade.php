@@ -35,7 +35,8 @@
     <table cellpadding="4">
         <tr>
             <td>Tanggal Pelaporan</td>
-            <td> : {{ date('d-m-Y', strtotime($reporting->created_at)) }} </td>
+            <td>:</td>
+            <td>{{ $reporting->created_at->format('d F Y') }} </td>
         </tr>
     </table>
 
@@ -43,27 +44,33 @@
     <table cellpadding="4">
         <tr>
             <td>Nama</td>
-            <td> : {{ $reporting->reportingUser->name }}</td>
+            <td>:</td>
+            <td>{{ $reporting->reportingUser->name }}</td>
         </tr>
         <tr>
             <td>Status Pelapor</td>
-            <td> : {{ ucfirst($reporting->reporter_as) }}</td>
+            <td>:</td>
+            <td>{{ ucfirst($reporting->reporter_as) }}</td>
         </tr>
         <tr>
             <td>Jenis Kelamin</td>
-            <td> : {{ ucfirst($reporting->reportingUser->gender) }}</td>
+            <td>:</td>
+            <td>{{ ucfirst($reporting->reportingUser->gender) }}</td>
         </tr>
         <tr>
             <td>Nomor Telepon</td>
-            <td> : {{ $reporting->reportingUser->phone_number }}</td>
+            <td>:</td>
+            <td>{{ $reporting->reportingUser->phone_number }}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td> : {{ $reporting->reportingUser->email }}</td>
+            <td>:</td>
+            <td>{{ $reporting->reportingUser->email }}</td>
         </tr>
         <tr>
             <td>Alamat Lengkap</td>
-            <td> : {{ $reporting->reportingUser->complete_address }}</td>
+            <td>:</td>
+            <td>{{ $reporting->reportingUser->complete_address }}</td>
         </tr>
     </table>
 
@@ -71,18 +78,22 @@
     <table cellpadding="4">
         <tr>
             <td>Jenis Kasus</td>
-            <td> : {{ $reporting->caseType->name }}</td>
+            <td>:</td>
+            <td>{{ $reporting->caseType->name }}</td>
         </tr>
         <tr>
             <td>Deskripsi Kasus</td>
-            <td> : {{ $reporting->case_description }}</td>
+            <td>:</td>
+            <td>{{ $reporting->case_description }}</td>
         </tr>
         <tr>
             <td>Cerita Singkat Peristiwa</td>
-            <td> : {{ $reporting->chronology }}</td>
+            <td>:</td>
+            <td>{{ $reporting->chronology }}</td>
         </tr>
         <tr>
             <td>Alasan Pengaduan</td>
+            <td>:</td>
             <td>
                 <ol>
                     @foreach ($reporting->reportingReason as $reason)
@@ -93,10 +104,12 @@
         </tr>
         <tr>
             <td>Alasan Lainnya</td>
-            <td> : {{ $reporting->optional_reporting_reason ?? '-'}}</td>
+            <td>:</td>
+            <td>{{ $reporting->optional_reporting_reason ?? '-'}}</td>
         </tr>
         <tr>
             <td>Identifikasi Kebutuhan Korban</td>
+            <td>:</td>
             <td>
                 <ol>
                     @foreach ($reporting->victimRequirement as $req)
@@ -107,7 +120,8 @@
         </tr>
         <tr>
             <td>Identifikasi Kebutuhan Lainnya</td>
-            <td> : {{ $reporting->optional_victim_requirement ?? '-'}}</td>
+            <td>:</td>
+            <td>{{ $reporting->optional_victim_requirement ?? '-'}}</td>
         </tr>
     </table>
 
@@ -115,10 +129,12 @@
     <table cellpadding="4">
         <tr>
             <td>Status Terlapor</td>
-            <td> : {{ $reporting->reportedStatus->name }}</td>
+            <td>:</td>
+            <td>{{ $reporting->reportedStatus->name }}</td>
         </tr>
         <tr>
             <td>Jenis Disabilitas</td>
+            <td>:</td>
             <td>
                 <ol>
                     @foreach ($reporting->disabilityType as $disability)
@@ -129,7 +145,8 @@
         </tr>
         <tr>
             <td>Jenis Disabilitas Lainnya</td>
-            <td> : {{ $reporting->optional_disability_type ?? '-' }}</td>
+            <td>:</td>
+            <td>{{ $reporting->optional_disability_type ?? '-' }}</td>
         </tr>
     </table>
 
@@ -137,11 +154,13 @@
     <table cellpadding="4">
         <tr>
             <td>Nomor Telepon</td>
-            <td> : {{ $reporting->optional_phone_number ?? '-' }}</td>
+            <td>:</td>
+            <td>{{ $reporting->optional_phone_number ?? '-' }}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td> : {{ $reporting->optional_email ?? '-' }}</td>
+            <td>:</td>
+            <td>{{ $reporting->optional_email ?? '-' }}</td>
         </tr>
     </table>
 </body>

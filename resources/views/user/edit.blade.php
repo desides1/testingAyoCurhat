@@ -8,20 +8,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('users.update', ['user' => $user->id]) }}" method="POST">
+                <form action="" method="POST" id="edit-modal-form">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
+                        <input type="text" name="name" class="form-control edit-name" value="{{ $user->name }}" required>
                     </div>
                     <div class="form-group">
                         <label for="name">Email</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control edit-email">
                     </div>
                     <div class="form-group">
                         <label for="name">Nomor Telepon</label>
-                        <input type="text" name="phone_number" class="form-control">
+                        <input type="text" name="phone_number" class="form-control edit-phone-number">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -32,6 +32,7 @@
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="user_id" value="">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>

@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-<div class="row mt-5">
+<div class="row mx-1 my-1">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header d-flex justify-content-between">
@@ -25,7 +25,7 @@
           <div class="col-md-2">
             @can('create_users')
             <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#createUserModal">
-              <i class="ri-add-line"></i>
+              <i class="ri-user-add-line"></i>
               Tambah Data
             </button>
 
@@ -64,7 +64,7 @@
               <td>
                 @can('update_users')
                 <!-- Detail & Edit -->
-                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm mr-2" data-toggle="modal" data-target="#editUserModal">
+                <a href="{{ route('users.update', $user->id) }}" class="btn btn-warning btn-sm mr-2 my-1 edit-btn" data-toggle="modal" data-target="#editUserModal" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-phone-number="{{ $user->phone_number }}">
                   <i class="ri-edit-2-line"></i>
                   Edit
                 </a>
@@ -79,7 +79,7 @@
                   @csrf
                   @method('PATCH')
                   <input type="hidden" name="status" value="inactive">
-                  <button type="submit" class="btn btn-danger btn-sm mr-2">
+                  <button type="submit" class="btn btn-danger btn-sm mr-2 my-1">
                     <i class="ri-alert-line"></i> Non Aktifkan
                   </button>
                 </form>
@@ -88,7 +88,7 @@
                   @csrf
                   @method('PATCH')
                   <input type="hidden" name="status" value="active">
-                  <button type="submit" class="btn btn-success btn-sm mr-2">
+                  <button type="submit" class="btn btn-success btn-sm mr-2 my-1">
                     <i class="ri-check-double-line"></i> Aktifkan
                   </button>
                 </form>
@@ -98,7 +98,7 @@
                 <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus petugas ini?')">
+                  <button type="submit" class="btn btn-danger btn-sm mr-2 my-1" onclick="return confirm('Apakah Anda yakin ingin menghapus petugas ini?')">
                     <i class="ri-delete-bin-line"></i> Hapus
                   </button>
                 </form>
@@ -133,5 +133,13 @@
       }
     });
   });
+
+  $('.edit-btn').on('click', function(e) {
+    e.preventDefault()
+    $('.edit-name').val($(this).data('name'))
+    $('.edit-email').val($(this).data('email'))
+    $('.edit-phone-number').val($(this).data('phone-number'))
+    $('#edit-modal-form').attr('action', $(this).attr('href'))
+  })
 </script>
 @endsection
