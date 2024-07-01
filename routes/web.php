@@ -8,7 +8,12 @@ use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/', function () {
+    return view('welcome');
+})->middleware('guest');
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 Route::prefix('auth')->group(function () {
     // Login
