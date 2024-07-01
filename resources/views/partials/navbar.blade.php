@@ -42,13 +42,6 @@
 
                         <!-- Fullscreen -->
                         <li class="nav-item iq-full-screen"><a href="#" class="" id="btnFullscreen"><i class="ri-drag-move-2-fill"></i></a></li>
-
-                        <!-- Logout -->
-                        <!-- <li>
-                            <a href="{{ route('logout') }}" class="btn btn-secondary pr-3 py-1 text-white d-inline mx-2">
-                                <i class="ri-logout-box-r-line"></i> Logout
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
             </div>

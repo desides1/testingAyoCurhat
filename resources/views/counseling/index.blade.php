@@ -98,7 +98,7 @@
                                         <form class="d-flex align-items-center" action="{{ route('counselings.send') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="receiver_id" value="{{ $user->id }}">
-                                            <input type="text" class="form-control mr-3 rtl-mr-0 rtl-ml-3" placeholder="Type your message" name="message">
+                                            <input type="text" class="form-control mr-3 rtl-mr-0 rtl-ml-3" placeholder="Tulis pesan disini" name="message">
                                             <button type="submit" class="btn btn-primary d-flex align-items-center p-2 mr-3 rtl-mr-0 rtl-ml-3"><i class="far fa-paper-plane mr-0" aria-hidden="true"></i><span class="d-none d-lg-block ml-1 mr-1">Kirim</span></button>
                                         </form>
                                     </div>
@@ -165,8 +165,8 @@
                                     <div class="chat-footer p-3 bg-white">
                                         <form class="d-flex align-items-center" action="{{ route('counselings.send') }}" method="POST">
                                             @csrf
-                                            <input type="text" class="form-control mr-3 rtl-mr-0 rtl-ml-3" placeholder="Type your message" name="message">
-                                            <button type="submit" class="btn btn-primary d-flex align-items-center p-2 mr-3 rtl-mr-0 rtl-ml-3"><i class="far fa-paper-plane mr-0" aria-hidden="true"></i><span class="d-none d-lg-block ml-1 mr-1">Send</span></button>
+                                            <input type="text" class="form-control mr-3 rtl-mr-0 rtl-ml-3" placeholder="Tulis pesan disini" name="message">
+                                            <button type="submit" class="btn btn-primary d-flex align-items-center p-2 mr-3 rtl-mr-0 rtl-ml-3"><i class="far fa-paper-plane mr-0" aria-hidden="true"></i><span class="d-none d-lg-block ml-1 mr-1">Kirim</span></button>
                                         </form>
                                     </div>
                                 </div>

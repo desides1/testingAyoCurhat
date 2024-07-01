@@ -6,15 +6,10 @@
         <div class="row align-items-center justify-content-center h-100">
             <div class="col-12">
                 <div class="row align-items-center">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <h2 class="mb-2">Login</h2>
                         <p>Silahkan login terlebih dahulu untuk masuk ke dalam sistem layanan</p>
-                        @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                        @endif
-                        <form method="POST" action="{{ route('login') }}">
+                        <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">
@@ -29,26 +24,12 @@
                                         <label>Password</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember
-                                            Me</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 rtl-left">
-                                    <a href="auth-recoverpw.html" class="text-primary float-right">Forgot
-                                        Password?</a>
-                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
-                            <p class="mt-3">
-                                Create an Account <a href="auth-sign-up.html" class="text-primary">Sign Up</a>
-                            </p>
+                            <button type="submit" class="d-block btn btn-primary"><i class="fas fa-sign-in-alt"></i> Log In</button>
                         </form>
                     </div>
-                    <div class="col-lg-6 mb-lg-0 mb-4 mt-lg-0 mt-4">
-                        <img src="{{ asset('assets/images/pages/login.png') }}" class="img-fluid w-80" alt="">
+                    <div class="col-lg-7 mb-lg-0 mb-4 mt-lg-0 mt-4 d-none d-lg-block text-center">
+                        <img src="{{ asset('assets/images/pages/login.png') }}" class="img-fluid" style="width: 100%; max-width: 450px;">
                     </div>
                 </div>
             </div>
