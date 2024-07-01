@@ -6,18 +6,50 @@
 
 @hasanyrole('Admin|Petugas')
 <div class="row mx-1 my-1">
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between">
-        <div class="header-title w-100">
-          <h4 class="card-title d-inline-block mb-0">Dashboard</h4>
-        </div>
-      </div>
+  <div class="col-sm-6">
+    <div class="card card-block card-stretch card-height">
       <div class="card-body">
-        <div class="row mb-4">
-          Ini dashboard
+        <div class="top-block d-flex align-items-center justify-content-between mb-3">
+          <h3 class="text-primary">
+            <span class="counter">{{ $reportingCount }}</span> Pengaduan
+          </h3>
+          <div class="bg-primary icon iq-icon-box-2 mr-2 rounded">
+            <i class="ri-edit-box-line"></i>
+          </div>
+        </div>
+        <h4>Total Seluruh Pengaduan</h4>
+        <div class="mt-1">
+          <p class="mb-0">{{ date('d F Y', time()) }}</p>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card card-block card-stretch card-height">
+      <div class="card-body">
+        <div class="top-block d-flex align-items-center justify-content-between mb-3">
+          <h3 class="text-success">
+            <span class="counter">{{ $userMessagesCount }}</span> Konseling
+          </h3>
+          <div class="bg-success icon iq-icon-box-2 mr-2 rounded">
+            <i class="ri-message-line"></i>
+          </div>
+        </div>
+        <h4>Total Konseling</h4>
+        <div class="mt-1">
+          <p class="mb-0">{{ date('d F Y', time()) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <div class="header-title">
+        <h4 class="card-title">Line Chart</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      Dashboard
     </div>
   </div>
 </div>

@@ -4,8 +4,8 @@
             <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                 <i class="ri-menu-line wrapper-menu"></i>
                 <a href="{{ route('dashboard') }}" class="header-logo">
-                    <img src="{{ asset('assets/images/logo/logo-color.png') }}" class="img-fluid rounded-normal light-logo" alt="logo" style="width: 50px; height: auto;">
-                    <img src=" {{ asset('assets/images/logo/logo-white.png') }}" class="img-fluid rounded-normal darkmode-logo" alt="logo" style="width: 50px; height: auto;">
+                    <img src="{{ asset('assets/images/logo/logo-color.png') }}" class="img-fluid rounded-normal light-logo" alt="logo" style="width: 40px; height: auto;">
+                    <img src=" {{ asset('assets/images/logo/logo-white.png') }}" class="img-fluid rounded-normal darkmode-logo" alt="logo" style="width: 40px; height: auto;">
                 </a>
             </div>
 
@@ -44,11 +44,11 @@
                         <li class="nav-item iq-full-screen"><a href="#" class="" id="btnFullscreen"><i class="ri-drag-move-2-fill"></i></a></li>
 
                         <!-- Logout -->
-                        <li>
+                        <!-- <li>
                             <a href="{{ route('logout') }}" class="btn btn-secondary pr-3 py-1 text-white d-inline mx-2">
                                 <i class="ri-logout-box-r-line"></i> Logout
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>

@@ -35,7 +35,7 @@
                         <label>Alamat Domisili</label>
                         <input type="text" name="complete_address" class="form-control" value="{{ auth()->user()->complete_address }}">
                     </div>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary mt-2">Simpan</button>
                 </div>
             </form>
         </div>

@@ -79,19 +79,19 @@
                                     <div class="chat-content scroller">
                                         @php $chats = \App\Models\Counseling::where('sender_id', $user->id)->orWhere('receiver_id', $user->id)->orderBy('created_at', 'asc')->get(); @endphp
                                         @foreach ($chats as $chat)
-                                            <div class="chat {{ $chat->sender_id != auth()->user()->id ? 'chat-left' : '' }}">
-                                                <div class="chat-user">
-                                                    <a class="avatar m-0">
-                                                        <img src="{{ asset('assets/images/user/1.jpg') }}" alt="avatar" class="avatar-35">
-                                                    </a>
-                                                    <span class="chat-time mt-1">6:45</span>
-                                                </div>
-                                                <div class="chat-detail">
-                                                    <div class="chat-message">
-                                                        <p>{{ $chat->message }}</p>
-                                                    </div>
+                                        <div class="chat {{ $chat->sender_id != auth()->user()->id ? 'chat-left' : '' }}">
+                                            <div class="chat-user">
+                                                <a class="avatar m-0">
+                                                    <img src="{{ asset('assets/images/user/1.jpg') }}" alt="avatar" class="avatar-35">
+                                                </a>
+                                                <span class="chat-time mt-1">6:45</span>
+                                            </div>
+                                            <div class="chat-detail">
+                                                <div class="chat-message">
+                                                    <p>{{ $chat->message }}</p>
                                                 </div>
                                             </div>
+                                        </div>
                                         @endforeach
                                     </div>
                                     <div class="chat-footer p-3 bg-white">
@@ -99,7 +99,7 @@
                                             @csrf
                                             <input type="hidden" name="receiver_id" value="{{ $user->id }}">
                                             <input type="text" class="form-control mr-3 rtl-mr-0 rtl-ml-3" placeholder="Type your message" name="message">
-                                            <button type="submit" class="btn btn-primary d-flex align-items-center p-2 mr-3 rtl-mr-0 rtl-ml-3"><i class="far fa-paper-plane mr-0" aria-hidden="true"></i><span class="d-none d-lg-block ml-1 mr-1">Send</span></button>
+                                            <button type="submit" class="btn btn-primary d-flex align-items-center p-2 mr-3 rtl-mr-0 rtl-ml-3"><i class="far fa-paper-plane mr-0" aria-hidden="true"></i><span class="d-none d-lg-block ml-1 mr-1">Kirim</span></button>
                                         </form>
                                     </div>
                                 </div>
