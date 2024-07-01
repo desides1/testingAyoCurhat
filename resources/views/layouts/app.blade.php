@@ -21,6 +21,7 @@
     <link rel='stylesheet' href="{{ asset('assets/vendor/fullcalendar/timegrid/main.css') }}" />
     <link rel='stylesheet' href="{{ asset('assets/vendor/fullcalendar/list/main.css') }} " />
     <link rel="stylesheet" href="{{ asset('assets/vendor/mapbox/mapbox-gl.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/chart/css/flowbite.min.css') }}" />
 
     @yield('style')
 </head>
@@ -88,6 +89,9 @@
 
     <!-- app JavaScript -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
+
+    <script src="{{ asset('assets/chart/js/apexchart.js') }}"></script>
+    <script src="{{ asset('assets/chart/js/flowbite.min.js') }}"></script>
 </body>
 
 </html>
