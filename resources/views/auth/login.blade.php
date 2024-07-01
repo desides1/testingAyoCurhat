@@ -8,7 +8,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5">
                         <h2 class="mb-2">Login</h2>
-                        <p>Silahkan login terlebih dahulu untuk masuk ke dalam sistem layanan</p>
+                        <p>Silahkan login terlebih dahulu untuk masuk ke dalam sistem</p>
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="row">
@@ -25,7 +25,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="d-block btn btn-primary"><i class="fas fa-sign-in-alt"></i> Log In</button>
+                            <button type="submit" class="d-block btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login</button>
                         </form>
                     </div>
                     <div class="col-lg-7 mb-lg-0 mb-4 mt-lg-0 mt-4 d-none d-lg-block text-center">

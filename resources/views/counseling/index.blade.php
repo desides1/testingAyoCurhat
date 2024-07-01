@@ -21,18 +21,18 @@
                                 </div>
                             </div>
                             <div class="chat-sidebar-channel scroller mt-4 pl-3 rtl-pr-3">
-                                <h5 class="">Public Channels</h5>
+                                <!-- <h5 class="">Public Channels</h5> -->
                                 <ul class="iq-chat-ui nav flex-column nav-pills">
                                     @foreach ($users as $user)
                                     <li>
                                         <a data-toggle="pill" href="#chatbox{{ $user->id }}">
                                             <div class="d-flex align-items-center">
-                                                <div class="avatar mr-2 rtl-ml-2 rtl-mr-0">
-                                                    <img src="{{ asset('assets/images/user/05.jpg') }}" alt="chatuserimage" class="avatar-50">
+                                                <div class="avatar mx-2 rtl-ml-2 rtl-mr-0">
+                                                    <img src="{{ asset('assets/images/pages/user.png') }}" alt="chatuserimage" class="avatar-50">
                                                 </div>
                                                 <div class="chat-sidebar-name">
                                                     <h6 class="mb-0 mr-3 rtl-mr-0">{{ $user->name }}</h6>
-                                                    <span>{{ $user->user_status }}</span>
+                                                    <span>{{ ucfirst($user->user_status) }}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -46,8 +46,7 @@
                             <div class="tab-content h-100">
                                 <div class="tab-pane fade active show h-100" id="default-block" role="tabpanel">
                                     <div class="chat-start">
-                                        <span class="iq-start-icon text-primary"><i class="ri-message-3-line"></i></span>
-                                        <button id="chat-start" class="btn chat-button mt-3">Start Conversation!</button>
+                                        <span class="iq-start-icon text-primary"><i class="ri-message-line"></i></span>
                                     </div>
                                 </div>
                                 @foreach ($users as $user)
@@ -58,8 +57,8 @@
                                                 <div class="sidebar-toggle">
                                                     <i class="ri-menu-3-line"></i>
                                                 </div>
-                                                <div class="avatar chat-user-profile m-0 mr-3 rtl-mr-0 rtl-ml-3">
-                                                    <img src="{{ asset('assets/images/user/05.jpg') }}" alt="avatar" class="avatar-50">
+                                                <div class="avatar chat-user-profile mr-2 ml-3 rtl-mr-0 rtl-ml-3">
+                                                    <img src="{{ asset('assets/images/pages/user.png') }}" alt="avatar" class="avatar-50">
                                                 </div>
                                                 <h5 class="mb-0 mr-3 rtl-ml-3 rtl-mr-0">{{ $user->name }}</h5>
                                             </div>
@@ -67,9 +66,8 @@
                                                 <span class="dropdown iq-bg-primary">
                                                     <i class="ri-more-2-line cursor-pointer dropdown-toggle nav-hide-arrow cursor-pointer pr-0" id="dropdownMenuButton02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></i>
                                                     <span class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton02">
-                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="fa fa-thumb-tack" aria-hidden="true"></i> Pin to top</a>
-                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete chat</a>
-                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="fa fa-ban" aria-hidden="true"></i> Block</a>
+                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="ri-pushpin-2-line" aria-hidden="true"></i> Pin</a>
+                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="ri-inbox-archive-line" aria-hidden="true"></i> Arsipkan</a>
                                                     </span>
                                                 </span>
                                             </div>
@@ -82,7 +80,7 @@
                                         <div class="chat {{ $chat->sender_id != auth()->user()->id ? 'chat-left' : '' }}">
                                             <div class="chat-user">
                                                 <a class="avatar m-0">
-                                                    <img src="{{ asset('assets/images/user/1.jpg') }}" alt="avatar" class="avatar-35">
+                                                    <img src="{{ asset('assets/images/pages/user.png') }}" alt="avatar" class="avatar-35">
                                                 </a>
                                                 <span class="chat-time mt-1">6:45</span>
                                             </div>
@@ -127,8 +125,8 @@
                                     <div class="chat-head">
                                         <header class="d-flex justify-content-between align-items-center bg-white pt-3 pr-3 pb-3">
                                             <div class="d-flex align-items-center">
-                                                <div class="avatar chat-user-profile m-0 mr-3 rtl-mr-0 rtl-ml-3">
-                                                    <img src="{{ asset('assets/images/user/05.jpg') }}" alt="avatar" class="avatar-50">
+                                                <div class="avatar chat-user-profile ml-3 mr-2 rtl-mr-0 rtl-ml-3">
+                                                    <img src="{{ asset('assets/images/pages/logo-satgas.png') }}" alt="avatar" class="avatar-50" style="width:60px; height:auto">
                                                 </div>
                                                 <h5 class="mb-0 mr-3 rtl-ml-3 rtl-mr-0">Satgas PPKS</h5>
                                             </div>
@@ -150,7 +148,7 @@
                                         <div class="chat {{ $chat->sender_id != auth()->user()->id ? 'chat-left' : '' }}">
                                             <div class="chat-user">
                                                 <a class="avatar m-0">
-                                                    <img src="{{ asset('assets/images/user/1.jpg') }}" alt="avatar" class="avatar-35">
+                                                    <img src="{{ asset('assets/images/pages/user.png') }}" alt="avatar" class="avatar-35" style="width:50px; height:auto">
                                                 </a>
                                                 <span class="chat-time mt-1">{{ date('H:i', strtotime($chat->created_at)) }}</span>
                                             </div>
