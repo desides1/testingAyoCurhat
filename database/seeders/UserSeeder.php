@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $admin = User::create([
-            'name' => 'adm',
+            'name' => 'admin',
             'password' => Hash::make(1234),
         ]);
 
@@ -19,20 +19,36 @@ class UserSeeder extends Seeder
 
         $tamuSatgasUsers = [
             [
-                'name' => 'zz',
+                'name' => 'Azizatur Rohma',
                 'password' => Hash::make(1234),
                 'gender' => 'perempuan',
                 'email' => 'azizaturrohmablt234@gmail.com',
                 'phone_number' => '082282560426',
-                'complete_address' => 'Dusun Krajan RT.001/RW.001',
+                'complete_address' => 'Jalan Hank Ogan Desa Tugu Harum Kecamatan Ogan Komering Ulu Timur, Sumatera Selatan',
             ],
             [
-                'name' => 'yy',
+                'name' => 'David Mahbubi',
                 'password' => Hash::make(1234),
                 'gender' => 'laki-laki',
-                'email' => 'example2@gmail.com',
+                'email' => 'ulrichdavid@gmail.com',
                 'phone_number' => '081234567890',
-                'complete_address' => 'Alamat kedua',
+                'complete_address' => 'Durun Krajan Desa Pakistaji Kecamatan Kabat Kabupaten Banyuwangi, Jawa Timur',
+            ],
+            [
+                'name' => 'Desi Ayu Trisnowati',
+                'password' => Hash::make(1234),
+                'gender' => 'perempuan',
+                'email' => 'desiayuth@gmail.com',
+                'phone_number' => '085768005286',
+                'complete_address' => 'Desa Gladag Kecamatan Rogojampi Kabupaten Banyuwangi, Jawa Timur',
+            ],
+            [
+                'name' => 'Novan Rohman Nur Khoir',
+                'password' => Hash::make(1234),
+                'gender' => 'laki-laki',
+                'email' => 'novan@gmail.com',
+                'phone_number' => '085877775286',
+                'complete_address' => 'Desa Karangbendo Kecamatan Rogojampi Kabupaten Banyuwangi, Jawa Timur',
             ],
         ];
 
