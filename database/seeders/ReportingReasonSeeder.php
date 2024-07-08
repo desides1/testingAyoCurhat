@@ -3,14 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\ReportingReason;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ReportingReasonSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $reportingReasonNames = [

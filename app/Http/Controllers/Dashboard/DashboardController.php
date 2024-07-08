@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Reporting;
 use App\Models\User;
-use App\Charts\DashboardChart;
 
 class DashboardController extends Controller
 {

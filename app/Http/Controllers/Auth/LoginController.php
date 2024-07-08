@@ -17,7 +17,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-
         if (Auth::attempt($request->only('name', 'password'))) {
             if (Auth::user()->user_status != 'active') {
                 Auth::logout();

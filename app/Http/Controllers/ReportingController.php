@@ -31,7 +31,6 @@ class ReportingController extends Controller
         return view('reporting.index', compact('title', 'reportings', 'status'));
     }
 
-
     public function indexReportingUser()
     {
         $title = 'Pengaduan';

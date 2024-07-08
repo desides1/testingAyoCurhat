@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use App\Model\MedicalRecord;
-use App\Model\Option;
 
 function arrayToString($arr, $separator = ',', $ucFirst = false)
 {
@@ -35,25 +33,6 @@ function birthdayCounter($dateOfBirth)
     $dateNow = new DateTime('now');
 
     return $dateOfBirth->diff($dateNow);
-}
-
-function generateMedicalRecordId($dateOfBirth, $userSortBy = 'created_at')
-{
-    $age = birthdayCounter($dateOfBirth)->y;
-    $prefix = 'PD';
-
-    if ($age <= 12) {
-        $prefix = 'PA';
-    } else if ($age <= 17) {
-        $prefix = 'PR';
-    }
-
-    $lastMedicalRecord = MedicalRecord::orderBy($userSortBy, 'DESC')->first();
-    $lastMedicalRecordId = $lastMedicalRecord ? $lastMedicalRecord->id : '0';
-
-    $lastMedicalIDNumber = (int) filter_var($lastMedicalRecordId, FILTER_SANITIZE_NUMBER_INT);
-
-    return $prefix . str_pad($lastMedicalIDNumber + 1, 3, '0', STR_PAD_LEFT);
 }
 
 function isActiveSidebar($urlToCompare)
@@ -124,12 +103,6 @@ function remapOptionKey($sources)
         $sourceBuff[$source->key] = $source;
     }
     return $sourceBuff;
-}
-
-function systemOption($key)
-{
-    $options = remapOptionKey(Option::all());
-    return $options[$key]->value;
 }
 
 function generateMonthList()
