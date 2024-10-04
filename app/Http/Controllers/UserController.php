@@ -26,7 +26,6 @@ class UserController extends Controller
         return view('user.index', compact('title', 'users', 'status'));
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
