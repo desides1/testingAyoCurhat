@@ -130,16 +130,6 @@
                                                 </div>
                                                 <h5 class="mb-0 mr-3 rtl-ml-3 rtl-mr-0">Satgas PPKS</h5>
                                             </div>
-                                            <div class="chat-header-icons d-flex">
-                                                <span class="dropdown iq-bg-primary">
-                                                    <i class="ri-more-2-line cursor-pointer dropdown-toggle nav-hide-arrow cursor-pointer pr-0" id="dropdownMenuButton02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></i>
-                                                    <span class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton02">
-                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="fa fa-thumb-tack" aria-hidden="true"></i> Pin to top</a>
-                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete chat</a>
-                                                        <a class="dropdown-item" href="JavaScript:void(0);"><i class="fa fa-ban" aria-hidden="true"></i> Block</a>
-                                                    </span>
-                                                </span>
-                                            </div>
                                         </header>
                                     </div>
 
@@ -158,7 +148,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach`
+                                        @endforeach
                                     </div>
                                     <div class="chat-footer p-3 bg-white">
                                         <form class="d-flex align-items-center" action="{{ route('counselings.send') }}" method="POST">

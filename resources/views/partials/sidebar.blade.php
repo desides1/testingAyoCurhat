@@ -89,10 +89,14 @@
 
                 @can('logout')
                 <li class="{{ isActiveSidebar(route('logout')) }}">
-                    <a href="{{ route('logout') }}">
+                    <a href="#" id="logout-link">
                         <i class="ri-logout-box-r-line"></i>
                         <span>Logout</span>
                     </a>
+                    <!-- Form Logout Laravel (POST method) -->
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
                 @endcan
             </ul>

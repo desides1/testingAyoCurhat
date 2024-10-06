@@ -35,7 +35,7 @@
                     <input type="hidden" name="user_id" value="">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" id="edit-account" class="btn btn-primary">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>

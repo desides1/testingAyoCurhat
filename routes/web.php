@@ -23,7 +23,7 @@ Route::prefix('auth')->group(function () {
     });
 
     // Logout
-    Route::get('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
 });
 
 Route::middleware('auth')->group(function () {
@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', [UserController::class, 'store'])->middleware('can:create_users')->name('users.store');
         Route::get('/show', [UserController::class, 'show'])->middleware('can:read_users')->name('users.show');
         Route::get('/profile', [UserController::class, 'indexProfile'])->middleware('can:update_profile')->name('users.profile');
+        Route::get('/edit-profile', [UserController::class, 'editProfile'])->middleware('can:update_profile')->name('users.edit.profile');
         Route::patch('/update-profile', [UserController::class, 'updateProfile'])->name('users.update.profile');
         Route::patch('/{user}/update', [UserController::class, 'update'])->name('users.update');
         Route::patch('/{id}/status', [UserController::class, 'updateUserStatus'])->middleware('can:update_user_status')->name('users.status.update');

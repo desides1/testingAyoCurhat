@@ -17,21 +17,21 @@ class UserSeeder extends Seeder
 
         $admin->assignRole('Admin');
 
-        $petugas = [
-            [
-                'name' => 'petugas',
-                'password'=> Hash::make(1234),
-            ],
-            [
-                'name' => 'petugas2',
-                'password'=> Hash::make(1234),
-            ],
-        ];
+        // $petugas = [
+        //     [
+        //         'name' => 'petugas',
+        //         'password'=> Hash::make(1234),
+        //     ],
+        //     [
+        //         'name' => 'petugas2',
+        //         'password'=> Hash::make(1234),
+        //     ],
+        // ];
 
-        foreach ($petugas as $ptg) {
-            $user = User::create($ptg);
-            $user->assignRole('Petugas');
-        }
+        // foreach ($petugas as $ptg) {
+        //     $user = User::create($ptg);
+        //     $user->assignRole('Petugas');
+        // }
 
         $tamuSatgasUsers = [
             [

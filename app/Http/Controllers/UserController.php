@@ -44,6 +44,8 @@ class UserController extends Controller
 
         $user->assignRole('Petugas');
 
+        session()->flash('success', 'Data berhasil disimpan!');
+
         return redirect()->route('users.index')->with('success', 'Berhasil menambahkan data petugas');
     }
 
@@ -85,6 +87,13 @@ class UserController extends Controller
         return view('user.index-profile', compact('title', 'user'));
     }
 
+    public function editProfile(User $user)
+    {
+        $title = 'Edit Profil Saya';
+
+        return view('user.edit-profile', compact('title', 'user'));
+    }
+
     public function updateProfile(Request $request)
     {
         $request->validate([
@@ -99,7 +108,7 @@ class UserController extends Controller
             'complete_address' => $request->complete_address,
         ]);
 
-        return redirect()->route('users.profile')->with('success', 'Profil anda berhasil diperbarui');
+        return redirect()->route('users.profile');
     }
 
     public function updateUserStatus(Request $request, $id)
@@ -114,13 +123,13 @@ class UserController extends Controller
 
         $users->save();
 
-        return redirect()->route('users.index')->with('success', 'Status petugas berhasil diperbarui');
+        return redirect()->route('users.index');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'Data petugas berhasil dihapus');
+        return redirect()->route('users.index');
     }
 }

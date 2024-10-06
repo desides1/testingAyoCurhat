@@ -115,7 +115,7 @@
                         <input type="text" class="form-control" id="optional_victim_requirement" name="optional_victim_requirement">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" id="add-reporting" class="btn btn-primary">Kirim</button>
                 </form>
             </div>
         </div>

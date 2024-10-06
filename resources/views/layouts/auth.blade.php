@@ -21,6 +21,9 @@
     <link rel='stylesheet' href="{{ asset('assets/vendor/fullcalendar/timegrid/main.css') }}" />
     <link rel='stylesheet' href="{{ asset('assets/vendor/fullcalendar/list/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/mapbox/mapbox-gl.css') }}">
+
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
 </head>
 
 <body class=" ">
@@ -76,6 +79,11 @@
 
     <!-- app JavaScript -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
+
+    <!-- Sweetalert -->
+    <script src="{{ asset('assets/sweetalert/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('assets/sweetalert/sweetalert2.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

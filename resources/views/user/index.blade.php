@@ -64,7 +64,7 @@
               <td>
                 @can('update_users')
                 <!-- Detail & Edit -->
-                <a href="{{ route('users.update', $user->id) }}" class="btn btn-warning btn-sm mr-2 my-1 edit-btn" data-toggle="modal" data-target="#editUserModal" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-phone-number="{{ $user->phone_number }}">
+                <a href="{{ route('users.update', $user->id) }}" id="edit" class="btn btn-warning btn-sm mr-2 my-1 edit-btn" data-toggle="modal" data-target="#editUserModal" data-name="{{ $user->name }}" data-email="{{ $user->email }}" data-phone-number="{{ $user->phone_number }}">
                   <i class="ri-edit-2-line"></i>
                   Edit
                 </a>
@@ -79,7 +79,7 @@
                   @csrf
                   @method('PATCH')
                   <input type="hidden" name="status" value="inactive">
-                  <button type="submit" class="btn btn-danger btn-sm mr-2 my-1">
+                  <button type="submit" id="inactive" class="btn btn-danger btn-sm mr-2 my-1">
                     <i class="ri-alert-line"></i> Non Aktifkan
                   </button>
                 </form>
@@ -88,7 +88,7 @@
                   @csrf
                   @method('PATCH')
                   <input type="hidden" name="status" value="active">
-                  <button type="submit" class="btn btn-success btn-sm mr-2 my-1">
+                  <button type="submit" id="active" class="btn btn-success btn-sm mr-2 my-1">
                     <i class="ri-check-double-line"></i> Aktifkan
                   </button>
                 </form>
@@ -98,7 +98,7 @@
                 <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger btn-sm mr-2 my-1" onclick="return confirm('Apakah Anda yakin ingin menghapus petugas ini?')">
+                  <button type="submit" id="delete" class="btn btn-danger btn-sm mr-2 my-1">
                     <i class="ri-delete-bin-line"></i> Hapus
                   </button>
                 </form>

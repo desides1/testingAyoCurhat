@@ -52,7 +52,7 @@
                 @else
                 <div class="text-center mt-4">
                     <img src="{{ asset('assets/images/pages/index-progress.png') }}" class="img-fluid rounded mb-4" alt="Responsive image" style="width: 400px; height: auto">
-                    <p>Progress belum ditambahkan</p>
+                    <p>Belum ada progress</p>
                 </div>
                 @endif
             </div>

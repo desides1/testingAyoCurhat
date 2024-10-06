@@ -19,7 +19,7 @@
                     <option value="archived" {{ request('status') == 'archived' ? 'selected' : '' }}>Diarsipkan</option>
                 </select>
 
-                <table id="datatable" class="table data-table table-striped table-bordered text-center" style="font-size: 0.875rem;">
+                <table id="datatable" class="table data-table table-striped table-bordered" style="font-size: 0.875rem;">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -61,7 +61,7 @@
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="status" value="archive">
-                                    <button type="submit" class="btn btn-danger btn-sm mr-2 my-2">
+                                    <button id="archive" type="submit" class="btn btn-danger btn-sm mr-2 my-2">
                                         <i class="ri-inbox-archive-line"></i> Arsipkan
                                     </button>
                                 </form>
@@ -70,7 +70,7 @@
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="status" value="publish">
-                                    <button type="submit" class="btn btn-success btn-sm mr-2 my-2">
+                                    <button id="publish" type="submit" class="btn btn-success btn-sm mr-2 my-2">
                                         <i class="ri-inbox-unarchive-line"></i> Publikasikan
                                     </button>
                                 </form>

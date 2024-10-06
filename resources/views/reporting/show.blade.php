@@ -23,7 +23,7 @@
                     <h4 style="margin-bottom: 2px;">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</h4>
                     <h4 style="margin: 0;">SATUAN TUGAS PENCEGAHAN DAN PENANGANAN KEKERASAN SEKSUAL POLITEKNIK NEGERI BANYUWANGI</h4>
                     <p style="margin: 0;">Jl. Raya Jember kilometer 13 Labanasem, Kabat, Banyuwangi, 68461</p>
-                    <p style="margin: 0;">Telepon/WhatsApp: 082139443575; Email: satgasppks@poliwangi.ac.id</p>
+                    <p style="margin: 0;">Telepon/WhatsApp: 082139443573; Email: satgasppks@poliwangi.ac.id</p>
                 </center>
             </td>
         </tr>
