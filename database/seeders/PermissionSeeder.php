@@ -33,6 +33,9 @@ class PermissionSeeder extends Seeder
             'read_counselings',
             # Emergency call permissons
             'emergency_call_access',
+            # Period Report
+            'read_period_report',
+            'download_period_report',
             # Auth permissions
             'logout',
         ];
@@ -42,7 +45,7 @@ class PermissionSeeder extends Seeder
 
     private function insertPermission(array $permissions): void
     {
-        $permissions = collect($permissions)->map(fn ($permission) => [
+        $permissions = collect($permissions)->map(fn($permission) => [
             'name' => $permission,
             'guard_name' => 'web',
             'created_at' => Carbon::now()

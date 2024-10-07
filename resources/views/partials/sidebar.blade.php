@@ -87,6 +87,15 @@
                 </li>
                 @endcan
 
+                @can('read_period_report')
+                <li class="{{ isActiveSidebar(route('report.index')) }}">
+                    <a href="{{ route('report.index') }}">
+                        <i class="ri-file-chart-line"></i>
+                        <span>Laporan</span>
+                    </a>
+                </li>
+                @endcan
+
                 @can('logout')
                 <li class="{{ isActiveSidebar(route('logout')) }}">
                     <a href="#" id="logout-link">

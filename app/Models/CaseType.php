@@ -13,7 +13,7 @@ class CaseType extends Model
         'name',
     ];
 
-    public function reporting()
+    public function reportings()
     {
         return $this->hasMany(Reporting::class);
     }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CounselingController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\EmergencyCallController;
+use App\Http\Controllers\PeriodReportController;
 use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,12 @@ Route::middleware('auth')->group(function () {
 
         // Archive / Unarchive
         Route::patch('/{id}/status', [ReportingController::class, 'updateReportingStatus'])->middleware('can:update_reporting_status')->name('reportings.status.update');
+    });
+
+    // Laporan (Period Report)
+    Route::prefix('laporan')->group(function () {
+        Route::get('', [PeriodReportController::class, 'index'])->middleware('can:read_period_report')->name('report.index');
+        Route::get('/unduh', [PeriodReportController::class, 'download'])->middleware('can:download_period_report')->name('report.download');
     });
 
     Route::prefix('user')->group(function () {
