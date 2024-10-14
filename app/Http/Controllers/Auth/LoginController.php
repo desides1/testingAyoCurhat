@@ -18,10 +18,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        if (empty($request->name) && empty($request->password)) {
-            return redirect()->back()->with('error', 'Formulir tidak boleh kosong! Masukkan Username dan Password.');
-        }
-
         // Cek jika keduanya kosong
         if (empty($request->name) && empty($request->password)) {
             return redirect()->back()->with('error', 'Formulir tidak boleh kosong! Masukkan Username dan Password.');
@@ -37,12 +33,22 @@ class LoginController extends Controller
             return redirect()->back()->with('error', 'Password tidak boleh kosong!');
         }
 
+        // Cek jika username mengandung angka atau simbol
+        if (!preg_match('/^[a-zA-Z\s]+$/', $request->name)) {
+            return redirect()->back()->with('error', 'Username tidak valid!');
+        }
+
         // $request->validate([
-        //     'name' => 'required',
+        //     'name' => [
+        //     'required',
+        //     'regex:/^[a-zA-Z]+$/',
+        //     'min:5',
+        //     'max:5'
+        // ],
         //     'password' => 'required',
         // ], [
         //     'password.required' => 'Login Gagal! Password Tidak Boleh Kosong',
-        //     'name.required' => 'Login Gagal! Username Tidak Boleh Kosong'
+        //     'name.required' => 'Login Gagal! Username Tidak Valid'
         // ]);
 
         if (Auth::attempt($request->only('name', 'password'))) {
