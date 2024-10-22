@@ -97,9 +97,9 @@
             }
 
             let phoneNumber = $('.edit-phone-number').val();
-            if (!phoneNumber.match(/^[0-9]+$/) || phoneNumber.length < 10 || phoneNumber.length > 15) {
+            if (!phoneNumber.match(/^[0-9]+$/) || phoneNumber.length < 11 || phoneNumber.length > 13) {
                 setError('phone_number',
-                    'Nomor telepon hanya boleh angka dan minimal 10 karakter maksimal 15 karakter');
+                    'Nomor telepon hanya boleh angka dan minimal 11 karakter maksimal 13 karakter');
                 isValid = false;
             }
 

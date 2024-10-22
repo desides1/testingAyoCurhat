@@ -38,6 +38,16 @@ class LoginController extends Controller
             return redirect()->back()->with('error', 'Username tidak valid!');
         }
 
+        // Cek jika password tidak valid (kurang dari 8)
+        // if (!preg_match('/^.{8,}$/', $request->password)) {
+        //     return redirect()->back()->with('error', 'Password harus minimal 8 karakter!');
+        // }
+
+         // Cek jika username dan password tidak valid
+    // if (!preg_match('/^[a-zA-Z\s]+$/', $request->name) && strlen($request->password) < 8) {
+    //     return redirect()->back()->with('error', 'Username dan password tidak valid!');
+    // }
+
         // $request->validate([
         //     'name' => [
         //     'required',
