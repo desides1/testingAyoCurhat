@@ -66,7 +66,7 @@
                 console.log("Submit ditangkap!");
                 Swal.fire({
                     title: 'Apakah Anda yakin?',
-                    text: "Anda akan menambah data ini?",
+                    text: "Ingin memperbarui data anda?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
