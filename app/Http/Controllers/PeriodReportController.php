@@ -13,8 +13,13 @@ class PeriodReportController extends Controller
     public function index(Request $request)
     {
         $title = 'Laporan Pengaduan';
+
         $year = $request->input('year');
         $month = $request->input('month');
+
+        if (($year > now()->year) && ($month < 1 || $month > 12)) {
+            return redirect()->route('report.index');
+        }
 
         $years = Reporting::selectRaw('YEAR(created_at) as year')
             ->distinct()
@@ -25,6 +30,7 @@ class PeriodReportController extends Controller
             if ($year) {
                 $query->whereYear('created_at', $year);
             }
+
             if ($month) {
                 $query->whereMonth('created_at', $month);
             }
@@ -47,6 +53,8 @@ class PeriodReportController extends Controller
         } else {
             $period = 'Semua Tahun';
         }
+
+        // dd($year, $month);
 
         $caseTypes = CaseType::withCount(['reportings' => function ($query) use ($year, $month) {
             if ($year) {

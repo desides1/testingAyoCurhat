@@ -14,13 +14,13 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="floating-label form-group">
-                                        <input class="floating-input form-control" type="text" placeholder=" " name="name">
+                                        <input class="floating-input form-control" type="text" placeholder=" " name="name" required>
                                         <label>Username</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="floating-label form-group">
-                                        <input class="floating-input form-control" type="password" placeholder=" " name="password">
+                                        <input class="floating-input form-control" type="password" placeholder=" " name="password" required>
                                         <label>Password</label>
                                     </div>
                                 </div>

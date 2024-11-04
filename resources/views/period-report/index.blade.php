@@ -10,7 +10,7 @@
                 <div class="header-title w-100">
                     <h4 class="card-title d-inline-block mb-0">Laporan Pengaduan</h4>
                 </div>
-                <a href="{{ route('report.download') }}" class="btn btn-primary mr-2 col-2">Unduh PDF</a>
+                <a target="_blank" href="{{ route('report.download', ['year'=>$year, 'month'=>$month]) }}" class="btn btn-primary mr-2 col-2">Unduh PDF</a>
             </div>
 
             <div class="card-body">
@@ -68,6 +68,7 @@
         $('#select-reporting-year-filter, #select-reporting-month-filter').change(e => {
             let year = $('#select-reporting-year-filter').val();
             let month = $('#select-reporting-month-filter').val();
+
             window.location.href = `{{ route("report.index") }}?year=${year}&month=${month}`;
         });
     });

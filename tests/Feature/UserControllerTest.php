@@ -17,13 +17,13 @@ class UserControllerTest extends TestCase
         $this->seed(\Database\Seeders\DatabaseSeeder::class);
         $admin = User::factory()->admin()->create();
     }
-    
+
     public function test_index_without_status_parameter()
     {
         $this->actingAs(User::factory()->admin()->create());
 
         $response = $this->get('/user');
-        
+
         $response->assertStatus(200);
     }
 
@@ -32,16 +32,16 @@ class UserControllerTest extends TestCase
         $this->actingAs(User::factory()->admin()->create());
 
         $response = $this->get('/user?status=active');
-        
+
         $response->assertStatus(200);
     }
 
     public function test_index_with_status_inactive()
     {
         $this->actingAs(User::factory()->admin()->create());
-        
+
         $response = $this->get('/user?status=inactive');
-        
+
         $response->assertStatus(200);
     }
 

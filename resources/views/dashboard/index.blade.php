@@ -3,6 +3,7 @@
 @section('title', $title)
 
 @section('style')
+
 @hasanyrole('Admin|Petugas')
 
 <head>
@@ -51,6 +52,7 @@
       </div>
     </div>
   </div>
+
   <div class="col-sm-12">
     <div class="card">
       <div class="card-header d-flex justify-content-between">
