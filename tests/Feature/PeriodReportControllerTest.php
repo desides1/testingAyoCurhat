@@ -15,13 +15,11 @@ class PeriodReportControllerTest extends TestCase
         parent::setUp();
 
         $this->seed(\Database\Seeders\DatabaseSeeder::class);
-        $admin = User::factory()->admin()->create();
+        $this->actingAs(User::factory()->admin()->create());
     }
 
     public function test_report_without_year_and_month()
     {
-        $this->actingAs(User::factory()->admin()->create());
-
         $response = $this->get('/laporan');
 
         $response->assertStatus(200);

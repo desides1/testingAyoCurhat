@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('reporter_id');
             $table->foreign('reporter_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
-            $table->enum('reporter_as', ['saksi', 'korban'])->default('saksi');
+            $table->enum('reporter_as', ['saksi', 'korban']);
             $table->unsignedBigInteger('case_type_id');
             $table->foreign('case_type_id')->references('id')->on('case_types')->onUpdate('cascade')->onDelete('restrict');
             $table->text('case_description');

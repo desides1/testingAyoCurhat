@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
     // Pengaduan
     Route::prefix('pengaduan')->group(function () {
-        Route::get('/all', [ReportingController::class, 'index'])->middleware('can:read_all_reportings')->name('reportings.all');
+        Route::get('/all', [ReportingController::class, 'index'])->middleware('can:read_all_reportings')->name('reportings.index');
         Route::get('', [ReportingController::class, 'indexReportingUser'])->middleware('can:read_reportings')->name('reportings.user');
         Route::get('/create', [ReportingController::class, 'create'])->middleware('can:create_reportings')->name('reportings.create');
         Route::post('/store', [ReportingController::class, 'store'])->middleware('can:create_reportings')->name('reportings.store');

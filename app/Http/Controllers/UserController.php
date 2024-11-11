@@ -19,6 +19,8 @@ class UserController extends Controller
             $query->where('user_status', 'active');
         } elseif ($status == 'inactive') {
             $query->where('user_status', 'inactive');
+        } elseif ($status) {
+            return redirect()->route('users.index');
         }
 
         $users = $query->get();

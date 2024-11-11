@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit\User;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class UserControllerTest extends TestCase
+class IndexDataPetugasTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -15,35 +15,41 @@ class UserControllerTest extends TestCase
         parent::setUp();
 
         $this->seed(\Database\Seeders\DatabaseSeeder::class);
-        $admin = User::factory()->admin()->create();
+        $this->actingAs(User::factory()->admin()->create());
     }
 
-    public function test_index_without_status_parameter()
+    public function testViewNullStatus()
     {
-        $this->actingAs(User::factory()->admin()->create());
+        $response = $this->get('/user?status=');
 
+        $response->assertStatus(200);
+    }
+
+    public function testViewAllUser()
+    {
         $response = $this->get('/user');
 
         $response->assertStatus(200);
     }
 
-    public function test_index_with_status_active()
+    public function testViewActiveUser()
     {
-        $this->actingAs(User::factory()->admin()->create());
-
         $response = $this->get('/user?status=active');
 
         $response->assertStatus(200);
     }
 
-    public function test_index_with_status_inactive()
+    public function testViewInactiveUser()
     {
-        $this->actingAs(User::factory()->admin()->create());
-
         $response = $this->get('/user?status=inactive');
 
         $response->assertStatus(200);
     }
 
-    // php artisan make:test UserControllerTest
+    public function testViewInvalidUserStatus()
+    {
+        $response = $this->get('/user?status=abc');
+
+        $response->assertStatus(302);
+    }
 }

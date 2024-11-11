@@ -80,7 +80,7 @@ class ReportingController extends Controller
 
     public function show(Reporting $reporting)
     {
-        $title = 'Unduh Pengaduan';
+        $title = 'Laporan Pengaduan';
 
         $reporting = $reporting->with(['reportingUser', 'reportingReason', 'reportedStatus', 'disabilityType', 'victimRequirement'])->first();
 
@@ -130,6 +130,6 @@ class ReportingController extends Controller
 
         $reporting->save();
 
-        return redirect()->route('reportings.all')->with('success', 'Status pengaduan berhasil diubah');
+        return redirect()->route('reportings.index')->with('success', 'Status pengaduan berhasil diubah');
     }
 }

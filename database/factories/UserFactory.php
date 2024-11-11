@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserFactory extends Factory
 {
+    protected $userModel = User::class;
+
     /**
      * Define the model's default state.
      *
@@ -28,6 +30,20 @@ class UserFactory extends Factory
     {
         return $this->afterCreating(function (User $user) {
             $user->assignRole('Admin');
+        });
+    }
+
+    public function tamuSatgas()
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->assignRole('Tamu Satgas');
+        });
+    }
+
+    public function petugas()
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->assignRole('Petugas');
         });
     }
 }

@@ -18,7 +18,7 @@
                     <div class="col-6">
                         <select class="form-control" id="select-reporting-year-filter" name="year">
                             <option value="">Semua Tahun</option>
-                            @foreach ($years as $availableYear)
+                            @foreach ($validYear as $availableYear)
                             <option value="{{ $availableYear }}" {{ request('year') == $availableYear ? 'selected' : '' }}>
                                 {{ $availableYear }}
                             </option>
