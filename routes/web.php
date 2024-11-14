@@ -30,6 +30,7 @@ Route::prefix('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     // Panggilan Darurat
     Route::get('emergency-call', [EmergencyCallController::class, 'index'])->middleware('can:emergency_call_access')->name('emergency_call');
+    // Route::get('/emergency-call', [EmergencyCallController::class, 'index'])->name('emergency-call.index');
 
     // Pengaduan
     Route::prefix('pengaduan')->group(function () {

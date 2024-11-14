@@ -30,4 +30,10 @@ class UserFactory extends Factory
             $user->assignRole('Admin');
         });
     }
+    public function tamuSatgas()
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->assignRole('Tamu Satgas');
+        });
+    }
 }
