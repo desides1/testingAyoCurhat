@@ -21,8 +21,8 @@
                 @endcan
 
                 @can('read_all_reportings')
-                <li class="{{ isActiveSidebar(route('reportings.all')) }}">
-                    <a href="{{ route('reportings.all') }}">
+                <li class="{{ isActiveSidebar(route('reportings.index')) }}">
+                    <a href="{{ route('reportings.index') }}">
                         <i class="ri-edit-box-line"></i>
                         <span>Pengaduan</span>
                     </a>

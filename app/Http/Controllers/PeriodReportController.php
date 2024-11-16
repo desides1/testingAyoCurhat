@@ -63,8 +63,6 @@ class PeriodReportController extends Controller
             return redirect()->route('report.index');
         }
 
-        // dd($year, $month);
-
         $caseTypes = CaseType::withCount(['reportings' => function ($query) use ($year, $month) {
             if ($year) {
                 $query->whereYear('created_at', $year);

@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/unduh', [PeriodReportController::class, 'download'])->middleware('can:download_period_report')->name('report.download');
     });
 
+    // User
     Route::prefix('user')->group(function () {
         Route::get('', [UserController::class, 'index'])->middleware('can:read_users')->name('users.index');
         Route::post('/store', [UserController::class, 'store'])->middleware('can:create_users')->name('users.store');
@@ -64,9 +65,9 @@ Route::middleware('auth')->group(function () {
         Route::patch('/update-profile', [UserController::class, 'updateProfile'])->name('users.update.profile');
         Route::patch('/{user}/update', [UserController::class, 'update'])->name('users.update');
         Route::patch('/{id}/status', [UserController::class, 'updateUserStatus'])->middleware('can:update_user_status')->name('users.status.update');
-        Route::delete('/{user}/delete', [UserController::class, 'destroy'])->middleware('can:delete_users')->name('users.destroy');
     });
 
+    // Konseling
     Route::prefix('konseling')->group(function () {
         Route::get('/', [CounselingController::class, 'index'])->name('counselings.index');
         Route::post('/send', [CounselingController::class, 'sendMessage'])->name('counselings.send');

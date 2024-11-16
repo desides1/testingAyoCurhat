@@ -93,15 +93,6 @@
                   </button>
                 </form>
                 @endif
-
-                <!-- Hapus Petugas -->
-                <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" id="delete" class="btn btn-danger btn-sm mr-2 my-1">
-                    <i class="ri-delete-bin-line"></i> Hapus
-                  </button>
-                </form>
               </td>
             </tr>
             @endforeach
