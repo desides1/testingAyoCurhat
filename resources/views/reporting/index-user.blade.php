@@ -40,7 +40,7 @@
                             <td>{{ $reporting->created_at->format('H:i:s') }}</td>
                             <td>{{ $reporting->caseType->name }}</td>
                             <td>
-                                <a href="{{ route('reportings.show', $reporting->id) }}" class="btn btn-warning btn-sm mr-2" target="_blank">
+                                <a href="{{ route('reportings.show', ['reporting'=>$reporting->id]) }}" class="btn btn-warning btn-sm mr-2" target="_blank">
                                     <i class="ri-eye-line"></i> Detail
                                 </a>
 

@@ -82,7 +82,7 @@ class ReportingController extends Controller
     {
         $title = 'Laporan Pengaduan';
 
-        $reporting = $reporting->with(['reportingUser', 'reportingReason', 'reportedStatus', 'disabilityType', 'victimRequirement'])->first();
+        // $reporting = $reporting->with(['reportingUser', 'reportingReason', 'reportedStatus', 'disabilityType', 'victimRequirement']);
 
         $pdf = Pdf::loadView('reporting.show', compact('title', 'reporting'));
         return $pdf->stream();
