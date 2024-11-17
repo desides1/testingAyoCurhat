@@ -25,6 +25,13 @@
     <!-- Sweetalert -->
     <link rel="stylesheet" href="{{ asset('assets/sweetalert/sweetalert2.min.css') }}">
 
+    <!-- Style -->
+    <style>
+        #datatable_filter {
+            display: none;
+        }
+    </style>
+
     @yield('style')
 </head>
 
