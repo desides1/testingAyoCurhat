@@ -22,7 +22,7 @@
                 <table id="datatable" class="table data-table table-striped table-bordered" style="font-size: 0.875rem;">
                     <thead>
                         <tr>
-                            <th>Nomor</th>
+                            <th>No</th>
                             <th>Tanggal</th>
                             <th>Waktu (WIB)</th>
                             <th>Nama Pelapor</th>

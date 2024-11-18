@@ -82,24 +82,20 @@ class ReportingController extends Controller
     {
         $title = 'Laporan Pengaduan';
 
-        // $reporting = $reporting->with(['reportingUser', 'reportingReason', 'reportedStatus', 'disabilityType', 'victimRequirement']);
-
         $pdf = Pdf::loadView('reporting.show', compact('title', 'reporting'));
         return $pdf->stream();
     }
 
-    public function indexReportingProgress($id)
+    public function indexReportingProgress(Reporting $reporting)
     {
         $title = 'Progress Pengaduan';
 
-        $reporting = Reporting::findOrFail($id);
-
-        $reportingProgress = ReportingProgress::where('reporting_id', $id)->get();
+        $reportingProgress = ReportingProgress::where('reporting_id', $reporting->id)->get();
 
         return view('reporting.index-progress', compact(
             'title',
             'reporting',
-            'reportingProgress',
+            'reportingProgress'
         ));
     }
 
