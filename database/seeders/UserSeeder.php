@@ -17,26 +17,26 @@ class UserSeeder extends Seeder
 
         $admin->assignRole('Admin');
 
-        $petugasUsers = [
-            [
-                'name' => 'petugas',
-                'email' => 'petugas1@gmail.com',
-                'phone_number' => '082182560426',
-                'password' => Hash::make(1234),
-            ],
-            [
-                'name' => 'petugas2',
-                'email' => 'petugas2@gmail.com',
-                'phone_number' => '082382560426',
-                'password' => Hash::make(1234),
-                'user_status' => 'inactive',
-            ],
-        ];
+        // $petugasUsers = [
+        //     [
+        //         'name' => 'petugas',
+        //         'email' => 'petugas1@gmail.com',
+        //         'phone_number' => '082182560426',
+        //         'password' => Hash::make(1234),
+        //     ],
+        //     [
+        //         'name' => 'petugas2',
+        //         'email' => 'petugas2@gmail.com',
+        //         'phone_number' => '082382560426',
+        //         'password' => Hash::make(1234),
+        //         'user_status' => 'inactive',
+        //     ],
+        // ];
 
-        foreach ($petugasUsers as $petugas) {
-            $user = User::create($petugas);
-            $user->assignRole('Petugas');
-        }
+        // foreach ($petugasUsers as $petugas) {
+        //     $user = User::create($petugas);
+        //     $user->assignRole('Petugas');
+        // }
 
         $tamuSatgasUsers = [
             [

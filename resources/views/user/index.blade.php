@@ -56,9 +56,9 @@
               <td>{{ $user->phone_number }}</td>
               <td>
                 @if ($user->user_status == 'active')
-                <span class="btn btn-success btn-sm">Aktif</span>
+                <span class="btn btn-success btn-sm">Active</span>
                 @elseif ($user->user_status == 'inactive')
-                <span class="btn btn-danger btn-sm">Tidak Aktif</span>
+                <span class="btn btn-danger btn-sm">Inactive</span>
                 @endif
               </td>
               <td>
