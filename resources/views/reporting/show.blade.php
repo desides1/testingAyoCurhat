@@ -16,12 +16,14 @@
     <table>
         <tr>
             <td>
-                <img src="{{ public_path('/assets/images/logo/logo-poliwangi.png') }}" alt="" style="max-width: 80px;">
+                <img src="{{ public_path('/assets/images/logo/logo-poliwangi.png') }}" alt=""
+                    style="max-width: 80px;">
             </td>
             <td>
                 <center>
                     <h4 style="margin-bottom: 2px;">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</h4>
-                    <h4 style="margin: 0;">SATUAN TUGAS PENCEGAHAN DAN PENANGANAN KEKERASAN SEKSUAL POLITEKNIK NEGERI BANYUWANGI</h4>
+                    <h4 style="margin: 0;">SATUAN TUGAS PENCEGAHAN DAN PENANGANAN KEKERASAN SEKSUAL POLITEKNIK NEGERI
+                        BANYUWANGI</h4>
                     <p style="margin: 0;">Jl. Raya Jember kilometer 13 Labanasem, Kabat, Banyuwangi, 68461</p>
                     <p style="margin: 0;">Telepon/WhatsApp: 082139443573; Email: satgasppks@poliwangi.ac.id</p>
                 </center>
@@ -97,7 +99,7 @@
             <td>
                 <ol>
                     @foreach ($reporting->reportingReason as $reason)
-                    <li>{{ $reason->name }}</li>
+                        <li>{{ $reason->name }}</li>
                     @endforeach
                 </ol>
             </td>
@@ -105,7 +107,7 @@
         <tr>
             <td>Alasan Lainnya</td>
             <td>:</td>
-            <td>{{ $reporting->optional_reporting_reason ?? '-'}}</td>
+            <td>{{ $reporting->optional_reporting_reason ?? '-' }}</td>
         </tr>
         <tr>
             <td>Identifikasi Kebutuhan Korban</td>
@@ -113,7 +115,7 @@
             <td>
                 <ol>
                     @foreach ($reporting->victimRequirement as $req)
-                    <li>{{ $req->name }}</li>
+                        <li>{{ $req->name }}</li>
                     @endforeach
                 </ol>
             </td>
@@ -121,7 +123,7 @@
         <tr>
             <td>Identifikasi Kebutuhan Lainnya</td>
             <td>:</td>
-            <td>{{ $reporting->optional_victim_requirement ?? '-'}}</td>
+            <td>{{ $reporting->optional_victim_requirement ?? '-' }}</td>
         </tr>
     </table>
 
@@ -138,8 +140,14 @@
             <td>
                 <ol>
                     @foreach ($reporting->disabilityType as $disability)
-                    <li>{{ $disability->name ?? '-' }}</li>
+                        <li>{{ $disability->name }}</li>
+                        {{--
+                        @php
+                            dd($reporting->disabilityType);
+                        @endphp --}}
                     @endforeach
+
+
                 </ol>
             </td>
         </tr>

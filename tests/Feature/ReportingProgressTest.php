@@ -27,23 +27,21 @@ public function lihat_laporan()
 {
     $this->actingAs(User::factory()->admin()->create());
     $reporting = Reporting::factory()->create();
-    $reportingProgress = ReportingProgress::factory()->create(['reporting_id'=>$reporting->id]);
-
-    $response = $this->get(route('reportings.progress', $reporting->id));
+    $response = $this->get(route('reportings.all'))
+    ->assertOk()
+    ->assertSeeText($reporting->title);
 
     $response->assertStatus(200);
-    $response->assertViewIs('reporting.index-progress');
-    $response->assertViewHas('reporting');
-    $response->assertViewHas('reportingProgress');
+
+
 }
 
-/** @test */
-public function dapat_menambahkan_progress()
+public function  test_dapat_menambahkan_progress()
 {
     $this->actingAs(User::factory()->admin()->create());
     $reporting = Reporting::factory()->create();
 
-    $response = $this->post(route('reportings.progress.store'), [
+    $response = $this->post(route('reportings.progress.create'), [
         'reporting_id' => $reporting->id,
         'note' => 'This is a progress note',
     ]);
@@ -51,9 +49,24 @@ public function dapat_menambahkan_progress()
     $response->assertRedirect(route('reportings.progress', $reporting->id));
     $response->assertSessionHas('success', 'Progress berhasil ditambahkan');
 
-    $this->assertDatabaseHas('reporting_progresses', [
+    $this->assertDatabaseHas('reporting_progress', [
         'reporting_id' => $reporting->id,
         'note' => 'This is a progress note',
+    ]);
+}
+
+public function  test_mengisi_note_kurang20_karakter()
+{
+    $this->actingAs(User::factory()->admin()->create());
+    $reporting = Reporting::factory()->create();
+
+    $response = $this->post(route('reportings.progress.create'), [
+        'reporting_id' => $reporting->id,
+        'note' => 'sip masuk',
+    ]);
+
+    $response->assertSessionHasErrors([
+        'note' => 'Catatan Progress Terlalu Pendek'
     ]);
 }
 
