@@ -18,6 +18,17 @@ class IndexDataPetugasTest extends TestCase
 
         // Login as Admin Satgas
         $this->actingAs(User::factory()->admin()->create());
+
+        // Add Petugas Accounts
+        User::factory()->count(2)->petugas()->create(['user_status' => 'active']);
+        User::factory()->count(2)->petugas()->create(['user_status' => 'inactive']);
+    }
+
+    public function test_mdp_10()
+    {
+        $response = $this->get('/user');
+
+        $response->assertStatus(200);
     }
 
     public function test_mdp_09()
