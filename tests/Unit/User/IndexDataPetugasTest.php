@@ -20,8 +20,8 @@ class IndexDataPetugasTest extends TestCase
         $this->actingAs(User::factory()->admin()->create());
 
         // Add Petugas Accounts
-        User::factory()->count(2)->petugas()->create(['user_status' => 'active']);
-        User::factory()->count(2)->petugas()->create(['user_status' => 'inactive']);
+        User::factory()->count(1)->petugas()->create(['user_status' => 'active']);
+        User::factory()->count(1)->petugas()->create(['user_status' => 'inactive']);
     }
 
     public function test_mdp_10()
@@ -29,6 +29,13 @@ class IndexDataPetugasTest extends TestCase
         $response = $this->get('/user');
 
         $response->assertStatus(200);
+
+        $html = $response->getContent();
+
+        dd($html);
+
+        // Cek apakah halaman 2 muncul dalam HTML
+        $this->assertStringContainsString('data-dt-idx="1"', $html);
     }
 
     public function test_mdp_09()
@@ -79,23 +86,19 @@ class IndexDataPetugasTest extends TestCase
         $this->assertEquals(2, $inactiveUser, 'Jumlah pengguna tidak aktif tidak sesuai');
     }
 
-    // public function test_mdp_05()
-    // {
-    //     $response = $this->get('/user?status=invalid');
+    public function test_mdp_06()
+    {
+        $response = $this->get('/user?status=');
 
-    //     $response->assertSee('Active');
-    //     $response->assertSee('Inactive');
+        $response->assertStatus(200);
+    }
 
-    //     $response->assertStatus(200);
+    public function test_mdp_05()
+    {
+        $response = $this->get('/user?status=invalid');
 
-    //     $html = $response->getContent();
-
-    //     $activeUser = substr_count($html, 'Active');
-    //     $inactiveUser = substr_count($html, 'Inactive');
-
-    //     $this->assertEquals(2, $activeUser, 'Jumlah pengguna aktif tidak sesuai');
-    //     $this->assertEquals(2, $inactiveUser, 'Jumlah pengguna tidak aktif tidak sesuai');
-    // }
+        $response->assertStatus(302);
+    }
 
     public function test_mdp_04()
     {

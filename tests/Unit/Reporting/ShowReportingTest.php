@@ -22,9 +22,10 @@ class ShowReportingTest extends TestCase
         $this->actingAs(User::factory()->admin()->create());
     }
 
-    public function testReportingDetail()
+    public function test_dp_01()
     {
         $user = User::factory()->tamuSatgas()->create();
+
         $reporting = Reporting::factory()->create([
             'reporter_id' => $user->id,
         ]);

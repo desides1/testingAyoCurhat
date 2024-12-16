@@ -19,7 +19,35 @@ class UpdateReportingStatusTest extends TestCase
         parent::setUp();
 
         $this->seed(\Database\Seeders\DatabaseSeeder::class);
-        $this->actingAs(User::factory()->admin()->create());
+
+        // Masuk sebagai Tamu Satgas
+        $this->actingAs(User::factory()->tamuSatgas()->create());
+    }
+
+    public function test_mp_05(): void
+    {
+        $user = User::factory()->tamuSatgas()->create();
+
+        $reporting = Reporting::factory()->create([
+            'reporter_id' => $user->id,
+        ]);
+
+        $reporting->disabilityType()->attach(DisabilityType::factory()->count(2)->create()->pluck('id'));
+        $reporting->reportingReason()->attach(ReportingReason::factory()->count(2)->create()->pluck('id'));
+        $reporting->victimRequirement()->attach(VictimRequirement::factory()->count(2)->create()->pluck('id'));
+
+        // Relations
+        $reporting = Reporting::with([
+            'reportingUser',
+            'reportingReason',
+            'reportedStatus',
+            'disabilityType',
+            'victimRequirement',
+        ])->find($reporting->id);
+
+        $response = $this->patch(route('reportings.status.update', ['id' => $reporting->id]), ['status' => 'archive']);
+
+        $response->assertStatus(403);
     }
 
     public function testToArchiveReporting(): void

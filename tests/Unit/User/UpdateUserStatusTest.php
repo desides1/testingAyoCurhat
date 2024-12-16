@@ -15,7 +15,18 @@ class UpdateUserStatusTest extends TestCase
         parent::setUp();
 
         $this->seed(\Database\Seeders\DatabaseSeeder::class);
-        $this->actingAs(User::factory()->admin()->create());
+
+        // Login as Petugas Satgas
+        $this->actingAs(User::factory()->petugas()->create());
+    }
+
+    public function test_nap_05(): void
+    {
+        $petugas = User::factory()->petugas()->create();
+
+        $response = $this->patch(route('users.status.update', ['id' => $petugas->id]), ['status' => 'inactive']);
+
+        $response->assertStatus(403);
     }
 
     public function testToInactiveUserStatus(): void

@@ -49,6 +49,8 @@ class RoleSeeder extends Seeder
             'read_reporting_progress',
             'create_reporting_progress',
             'update_reporting_status',
+            'read_period_report',
+            'download_period_report',
             'logout',
         );
 
