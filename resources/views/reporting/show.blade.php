@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    {{-- @php
+        dd($reporting);
+    @endphp --}}
     <table>
         <tr>
             <td>
@@ -140,14 +143,8 @@
             <td>
                 <ol>
                     @foreach ($reporting->disabilityType as $disability)
-                        <li>{{ $disability->name }}</li>
-                        {{--
-                        @php
-                            dd($reporting->disabilityType);
-                        @endphp --}}
+                        <li>{{ $disability->name ?? '-' }}</li>
                     @endforeach
-
-
                 </ol>
             </td>
         </tr>

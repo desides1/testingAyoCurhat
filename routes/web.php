@@ -40,10 +40,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', [ReportingController::class, 'store'])->middleware('can:create_reportings')->name('reportings.store');
 
         // Detail & Download
-        Route::get('/show', [ReportingController::class, 'show'])->middleware('can:show_detail_reportings')->name('reportings.show');
+        // Route::get('/show', [ReportingController::class, 'show'])->middleware('can:show_detail_reportings')->name('reportings.show');
+        Route::get('/show/{reporting}', [ReportingController::class, 'show'])->middleware(['can:show_detail_reportings'])->name('reportings.show');
 
         // Progress Pengaduan
-        Route::get('/{id}/progress', [ReportingController::class, 'indexReportingProgress'])->middleware('can:read_reporting_progress')->name('reportings.progress');
+        Route::get('/{id}/progress', [ReportingController::class, 'indexReportingProgress'])->name('reportings.progress');
+        // Route::get('/{id}/progress', [ReportingController::class, 'indexReportingProgress'])->middleware('can:read_reporting_progress')->name('reportings.progress');
         Route::post('/progress/create', [ReportingController::class, 'storeReportingProgress'])->middleware('can:create_reporting_progress')->name('reportings.progress.create');
 
         // Archive / Unarchive

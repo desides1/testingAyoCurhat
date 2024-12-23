@@ -11,10 +11,12 @@ use App\Models\ReportingReason;
 use App\Models\VictimRequirement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportingController extends Controller
 {
+
     public function index(Request $request)
     {
         $title = 'Pengaduan';
@@ -54,10 +56,12 @@ class ReportingController extends Controller
         return view('reporting.create', compact('title', 'caseTypes', 'reportedStatuses', 'disabilityTypes', 'reportingReasons', 'victimRequirements'));
     }
 
+
     public function store(Request $request)
     {
+
         // Validasi input
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'reporter_as' => 'required|not_in:-- Pilih --', // Pastikan pilihan valid
             'case_type_id' => 'required|not_in:-- Pilih --',
             'case_description' => 'required|string|min:10',
@@ -85,6 +89,13 @@ class ReportingController extends Controller
             'victim_requirements.required' => 'Kebutuhan korban wajib dipilih setidaknya 1'
         ]);
 
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         // Simpan data setelah validasi
         $reporting = new Reporting();
         $reporting->reporter_id = Auth::id();
@@ -111,11 +122,14 @@ class ReportingController extends Controller
 
     public function show(Reporting $reporting)
     {
+
         $title = 'Unduh Pengaduan';
 
-        $reporting = $reporting->with(['reportingUser', 'reportingReason', 'reportedStatus', 'disabilityType', 'victimRequirement'])->first();
+        // $reporting = $reporting->with(['reportingUser', 'reportingReason', 'reportedStatus', 'disabilityType', 'victimRequirement'])->first();
+
 
         $pdf = Pdf::loadView('reporting.show', compact('title', 'reporting'));
+        // dd($reporting);
         return $pdf->stream();
     }
 

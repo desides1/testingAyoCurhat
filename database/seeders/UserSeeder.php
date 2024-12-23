@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
         $tamuSatgasUsers = [
             [
                 'name' => 'Azizatur Rohma',
-                'password' => Hash::make(1234),
+                'password' => Hash::make('22*zztur'),
                 'gender' => 'perempuan',
                 'email' => 'azizaturrohmablt234@gmail.com',
                 'phone_number' => '082282560426',
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'David Mahbubi',
-                'password' => Hash::make(1234),
+                'password' => Hash::make('bubibu*12'),
                 'gender' => 'laki-laki',
                 'email' => 'ulrichdavid@gmail.com',
                 'phone_number' => '081234567890',
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Desi Ayu Trisnowati',
-                'password' => Hash::make(1234),
+                'password' => Hash::make('lala^12'),
                 'gender' => 'perempuan',
                 'email' => 'desiayuth@gmail.com',
                 'phone_number' => '085768005286',
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Novan Rohman Nur Khoir',
-                'password' => Hash::make(1234),
+                'password' => Hash::make('heyyo*42'),
                 'gender' => 'laki-laki',
                 'email' => 'novan@gmail.com',
                 'phone_number' => '085877775286',
