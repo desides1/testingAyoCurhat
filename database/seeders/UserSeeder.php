@@ -17,19 +17,24 @@ class UserSeeder extends Seeder
 
         $admin->assignRole('Admin');
 
-        // $petugas = [
+        // $petugasUsers = [
         //     [
         //         'name' => 'petugas',
-        //         'password'=> Hash::make(1234),
+        //         'email' => 'petugas1@gmail.com',
+        //         'phone_number' => '082182560426',
+        //         'password' => Hash::make(1234),
         //     ],
         //     [
         //         'name' => 'petugas2',
-        //         'password'=> Hash::make(1234),
+        //         'email' => 'petugas2@gmail.com',
+        //         'phone_number' => '082382560426',
+        //         'password' => Hash::make(1234),
+        //         'user_status' => 'inactive',
         //     ],
         // ];
 
-        // foreach ($petugas as $ptg) {
-        //     $user = User::create($ptg);
+        // foreach ($petugasUsers as $petugas) {
+        //     $user = User::create($petugas);
         //     $user->assignRole('Petugas');
         // }
 
@@ -68,8 +73,8 @@ class UserSeeder extends Seeder
             ],
         ];
 
-        foreach ($tamuSatgasUsers as $userData) {
-            $user = User::create($userData);
+        foreach ($tamuSatgasUsers as $tamuSatgas) {
+            $user = User::create($tamuSatgas);
             $user->assignRole('Tamu Satgas');
         }
     }

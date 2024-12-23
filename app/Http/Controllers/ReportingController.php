@@ -133,18 +133,16 @@ class ReportingController extends Controller
         return $pdf->stream();
     }
 
-    public function indexReportingProgress($id)
+    public function indexReportingProgress(Reporting $reporting)
     {
         $title = 'Progress Pengaduan';
 
-        $reporting = Reporting::findOrFail($id);
-
-        $reportingProgress = ReportingProgress::where('reporting_id', $id)->get();
+        $reportingProgress = ReportingProgress::where('reporting_id', $reporting->id)->get();
 
         return view('reporting.index-progress', compact(
             'title',
             'reporting',
-            'reportingProgress',
+            'reportingProgress'
         ));
     }
 
@@ -175,6 +173,6 @@ class ReportingController extends Controller
 
         $reporting->save();
 
-        return redirect()->route('reportings.all')->with('success', 'Status pengaduan berhasil diubah');
+        return redirect()->route('reportings.index')->with('success', 'Status pengaduan berhasil diubah');
     }
 }

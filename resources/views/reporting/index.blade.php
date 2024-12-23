@@ -90,7 +90,7 @@
 <script>
     $(function() {
         $('#select-reporting-status-filter').change(e => {
-            window.location.href = `{{ route("reportings.all") }}${$(e.target).val() ? `?status=${$(e.target).val()}` : ''}`;
+            window.location.href = `{{ route("reportings.index") }}${$(e.target).val() ? `?status=${$(e.target).val()}` : ''}`;
         });
     });
 </script>

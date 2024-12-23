@@ -37,7 +37,6 @@ class RoleSeeder extends Seeder
             'create_users',
             'update_users',
             'update_user_status',
-            'delete_users',
             'read_period_report',
             'download_period_report',
             'logout',
@@ -50,6 +49,8 @@ class RoleSeeder extends Seeder
             'read_reporting_progress',
             'create_reporting_progress',
             'update_reporting_status',
+            'read_period_report',
+            'download_period_report',
             'logout',
         );
 
