@@ -21,8 +21,6 @@ class UserController extends Controller
             $query->where('user_status', 'active');
         } elseif ($status == 'inactive') {
             $query->where('user_status', 'inactive');
-        } elseif ($status) {
-            return redirect()->route('users.index');
         }
 
         $users = $query->get();
@@ -70,7 +68,7 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['store_error' => 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage()])
                 ->withInput()
                 ->with('modal_type', 'create');
-     }
+        }
     }
 
     public function show(User $user)
@@ -122,7 +120,6 @@ class UserController extends Controller
                 ->withErrors(['update_error' => 'Terjadi kesalahan saat memperbarui data: ' . $e->getMessage()])
                 ->withInput()
                 ->with('modal_type', 'edit');
-
         }
     }
 
@@ -141,30 +138,30 @@ class UserController extends Controller
     }
 
     public function updateProfile(Request $request)
-{
-    $request->validate([
-        'email' => 'nullable|email|unique:users,email,' . auth()->user()->id,
-        'phone_number' => 'nullable|min:11|max:13|regex:/^[0-9]+$/',
-        'complete_address' => 'nullable|min:15',
-    ], [
-        'email.unique' => 'Email ini sudah terdaftar.',
-        'email.email' => 'Format email tidak valid.',
-        'phone_number.max' => 'Nomor telepon maksimal 13 karakter.',
-        'phone_number.min' => 'Nomor telepon minimal 11 karakter.',
-        'phone_number.regex' => 'Nomor telepon hanya boleh mengandung angka.',
-        'complete_address.min' => 'Alamat harus memiliki minimal 15 karakter.',
-    ]);
+    {
+        $request->validate([
+            'email' => 'nullable|email|unique:users,email,' . auth()->user()->id,
+            'phone_number' => 'nullable|min:11|max:13|regex:/^[0-9]+$/',
+            'complete_address' => 'nullable|min:15',
+        ], [
+            'email.unique' => 'Email ini sudah terdaftar.',
+            'email.email' => 'Format email tidak valid.',
+            'phone_number.max' => 'Nomor telepon maksimal 13 karakter.',
+            'phone_number.min' => 'Nomor telepon minimal 11 karakter.',
+            'phone_number.regex' => 'Nomor telepon hanya boleh mengandung angka.',
+            'complete_address.min' => 'Alamat harus memiliki minimal 15 karakter.',
+        ]);
 
-    User::find(auth()->user()->id)->update([
-        'email' => $request->email,
-        'phone_number' => $request->phone_number,
-        'complete_address' => $request->complete_address,
-    ]);
+        User::find(auth()->user()->id)->update([
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'complete_address' => $request->complete_address,
+        ]);
 
-    session()->flash('success', 'Profil berhasil diperbarui!');
+        session()->flash('success', 'Profil berhasil diperbarui!');
 
-    return redirect()->back();
-}
+        return redirect()->back();
+    }
 
     public function updateUserStatus(Request $request, $id)
     {
@@ -177,6 +174,13 @@ class UserController extends Controller
         }
 
         $users->save();
+
+        return redirect()->route('users.index');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
 
         return redirect()->route('users.index');
     }

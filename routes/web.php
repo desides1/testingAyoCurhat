@@ -45,10 +45,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/show/{reporting}', [ReportingController::class, 'show'])->middleware(['can:show_detail_reportings', 'protect_reporting'])->name('reportings.show');
 
         // Progress Pengaduan
-        Route::get('/{id}/progress', [ReportingController::class, 'indexReportingProgress'])->name('reportings.progress');
-        // Route::get('/{id}/progress', [ReportingController::class, 'indexReportingProgress'])->middleware(['can:read_reporting_progress', 'protect_reporting'])->name('reportings.progress');
+        // Route::get('/{id}/progress', [ReportingController::class, 'indexReportingProgress'])->name('reportings.progress');
+        // Route::get('/{reporting}/progress', [ReportingController::class, 'indexReportingProgress'])->middleware(['can:read_reporting_progress', 'protect_reporting'])->name('reportings.progress');
+        Route::get('/{id}/progress', [ReportingController::class, 'indexReportingProgress'])->middleware(['can:read_reporting_progress', 'protect_reporting'])->name('reportings.progress');
         Route::post('/progress/create', [ReportingController::class, 'storeReportingProgress'])->middleware('can:create_reporting_progress')->name('reportings.progress.create');
 
+        // Route::get('/{reporting}/progress', [ReportingController::class, 'indexReportingProgress'])->middleware(['can:read_reporting_progress', 'protect_reporting'])->name('reportings.progress');
+        // Route::post('/progress/create', [ReportingController::class, 'storeReportingProgress'])->middleware('can:create_reporting_progress')->name('reportings.progress.create');
         // Archive / Unarchive
         Route::patch('/{id}/status', [ReportingController::class, 'updateReportingStatus'])->middleware('can:update_reporting_status')->name('reportings.status.update');
     });
@@ -60,6 +63,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // User
+
     Route::prefix('user')->group(function () {
         Route::get('', [UserController::class, 'index'])->middleware('can:read_users')->name('users.index');
         Route::post('/store', [UserController::class, 'store'])->middleware('can:create_users')->name('users.store');
@@ -69,6 +73,7 @@ Route::middleware('auth')->group(function () {
         Route::patch('/update-profile', [UserController::class, 'updateProfile'])->name('users.update.profile');
         Route::patch('/{user}/update', [UserController::class, 'update'])->name('users.update');
         Route::patch('/{id}/status', [UserController::class, 'updateUserStatus'])->middleware('can:update_user_status')->name('users.status.update');
+        Route::delete('/{user}/delete', [UserController::class, 'destroy'])->middleware('can:delete_users')->name('users.destroy');
     });
 
     // Konseling
